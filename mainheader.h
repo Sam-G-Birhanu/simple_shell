@@ -30,6 +30,10 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
+#define F_BUFF 1
+#define F_CMD_L 2
+#define F_CMDS 4
+
 void handling_semicolon_and_operators(char *buff, int read, char *first_av);
 size_t print_list(const list_t *h);
 list_t *add_node_end(list_t **head, const char *str);
@@ -69,6 +73,7 @@ int _getline(char **buffer, size_t *buf_size, FILE *stream);
 char *_strcpy(char *dest, char *src);
 char *_strncpy(char *dest, char *src, int n);
 
+char *_strcat(char *s1, const char *s2);
 /* Command handlers */
 int handle_PATH(char **commands);
 char *getpath(char *dir, char *filename);
