@@ -5,6 +5,9 @@ extern char *ORIGINAL_PATH;
 int executeCommand(char **tokens)
 {
 	char *original_path = strdup(ORIGINAL_PATH);
+	int result = handleBuiltins(tokens);
+	char *programName = tokens[0];
+	char *token = strtok(original_path, ":");
 	if (strcmp(tokens[0], "exit") == 0) {
 		exit(0);
 	}
@@ -17,16 +20,12 @@ int executeCommand(char **tokens)
 		return -1;
 	}
 **/
-	int result = handleBuiltins(tokens);
 
 	if (result != -1) {
 		setenv("PATH", original_path, 1);
 		return result;
 	}
 
-
-	char *programName = tokens[0];
-	char *token = strtok(original_path, ":");
 	if (programName[0] == '/')
 	{
 		if (fileExists(programName)) {
@@ -57,18 +56,20 @@ int executeCommand(char **tokens)
 			}
 
 			if (child == 0) {
-				if (chdir(originalDirectory) == -1)
-				{
-					perror("chdir");
-					exit(EXIT_FAILURE);
-				}
-
-				setenv("PATH", original_path, 1);
-
 				char *args[MAX_ARGUMENTS];
 				args[0] = programPath;
 
 				int i;
+				/** if (chdir(originalDirectory) == -1)
+				{
+					perror("chdir");
+					exit(EXIT_FAILURE);
+				}
+				**/
+
+				setenv("PATH", original_path, 1);
+
+				
 
 				for (i = 1; tokens[i] != NULL; i++)
 				{
