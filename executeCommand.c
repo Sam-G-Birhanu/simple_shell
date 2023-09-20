@@ -1,7 +1,7 @@
 #include "shell.h"
 
 extern char **environ;
-char *ORIGINAL_PATH = getenv("PATH");
+char *ORIGINAL_PATH;
 int executeCommand(char **tokens) {
 	int result;
 	char *programName;
