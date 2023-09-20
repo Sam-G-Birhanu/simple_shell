@@ -27,7 +27,7 @@ int prompt() {
 			perror("tokenize");
 			break;
 		}
-
+printf("I am above exc command");
 		executeCommand(tokens);
 		for (i = 0; tokens[i] != NULL; i++)
 		{
