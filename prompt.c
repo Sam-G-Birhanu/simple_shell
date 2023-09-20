@@ -7,6 +7,9 @@ int prompt() {
 	
 	while (1)
 	{
+		char **tokens = tokenize(line);
+		int i
+		
 		printf("$ ");
 		
 		read = getline(&line, &leng, stdin);
@@ -17,8 +20,6 @@ int prompt() {
 		}
 		
 		line[strlen(line) - 1] = '\0';
-		
-		char **tokens = tokenize(line);
 		if (tokens == NULL)
 		{
 			perror("tokenize");
@@ -26,7 +27,7 @@ int prompt() {
 		}
 
 		executeCommand(tokens);
-		for (int i = 0; tokens[i] != NULL; i++)
+		for (i = 0; tokens[i] != NULL; i++)
 		{
 			free(tokens[i]);
 		}
