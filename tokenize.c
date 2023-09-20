@@ -8,14 +8,16 @@
 char **tokenize(const char *command)
 {
 	int i = 0;
-	char **tokens = malloc(sizeof(char *) * 128);
+	char *token;
 	
+	char **tokens = malloc(sizeof(char *) * 128);
+	token = strtok((char *)command, " ");
 	if (tokens == NULL)
 	{
 		return NULL;
 	}
 	
-	char *token = strtok((char *)command, " ");
+	
 	
 	while (token != NULL)
 	{
