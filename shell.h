@@ -11,7 +11,7 @@
 #define MAX_ARGUMENTS 128
 /** extern char *ORIGINAL_PATH; **/
 int main(void);
-int prompt(void);
+int prompt(const char *originalPath);
 char **tokenize(const char *command);
 int executeCommand(char **tokens);
 int executePathSpecifiedCmd(char *programPath, char **tokens);
