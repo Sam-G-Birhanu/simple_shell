@@ -95,7 +95,7 @@ int executeCommand(char **tokens) {
 				wait(&status);
 
 				if (WIFEXITED(status)) {
-					printf("Child process exited with status %d\n", WEXITSTATUS(status));
+					return 0;
 				}
 
 				free(programPath);
