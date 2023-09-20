@@ -7,12 +7,14 @@
 
 char **tokenize(const char *command)
 {
+	int i = 0;
 	char **tokens = malloc(sizeof(char *) * 128);
+	
 	if (tokens == NULL)
 	{
 		return NULL;
 	}
-	int i = 0;
+	
 	char *token = strtok((char *)command, " ");
 	
 	while (token != NULL)
