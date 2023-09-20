@@ -8,7 +8,6 @@ int executeCommand(char **tokens)
 	int result = handleBuiltins(tokens);
 	char *programName = tokens[0];
 	char *token = strtok(original_path, ":");
-		printf("%s original path" ,original_path);
 
 	if (strcmp(tokens[0], "exit") == 0) {
 		exit(0);
@@ -30,6 +29,8 @@ int executeCommand(char **tokens)
 
 	if (programName[0] == '/')
 	{
+				printf("%s original path" ,original_path);
+
 		if (fileExists(programName)) {
 		    executePathSpecifiedCmd(programName, tokens);
 		    return -1;
@@ -37,7 +38,8 @@ int executeCommand(char **tokens)
 	}
 	while (token != NULL)
 	{
-	
+			printf("%s original path" ,original_path);
+
 		char *programPath = malloc(strlen(token) + strlen("/") + strlen(programName) + 1);
 		if (programPath == NULL) {
 			perror("malloc");
