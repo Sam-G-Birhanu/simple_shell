@@ -4,7 +4,7 @@ extern char **environ;
 extern char *ORIGINAL_PATH;
 int executeCommand(char **tokens)
 {
-	char *original_path = ORIGINAL_PATH;
+	char *original_path = getenv("PATH");
 	int result = handleBuiltins(tokens);
 	char *programName = tokens[0];
 	char *token = strtok(original_path, ":");
