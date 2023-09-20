@@ -11,17 +11,28 @@ char **tokenize(const char *command)
 	char *token;
 	
 	char **tokens = malloc(sizeof(char *) * 128);
-	token = strtok((char *)command, " ");
+	
 	if (tokens == NULL)
 	{
+		perror("malloc");
 		return NULL;
 	}
-	
-	
-	
+	token = strtok((char *)command, " ");
 	while (token != NULL)
 	{
-		tokens[i++] = strdup(token);
+		tokens[i] = strdup(token);
+		if (tokens[i] == NULL)
+        {
+		int j;
+            perror("strdup");
+            for ( j = 0; j < i; j++)
+            {
+                free(tokens[j]);
+            }
+            free(tokens);
+            return NULL;
+        }
+		i++;
 		token = strtok(NULL, " ");
 	}
 	
