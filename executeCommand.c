@@ -74,7 +74,7 @@ int executeCommand(char **tokens,  const char *originalPath)
 				}
 				**/
 
-				setenv("PATH", original_path, 1);
+				/** setenv("PATH", original_path, 1); **/
 
 				
 
