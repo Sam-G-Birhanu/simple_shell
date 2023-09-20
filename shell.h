@@ -15,7 +15,7 @@ int prompt(const char *originalPath);
 char **tokenize(const char *command);
 int executeCommand(char **tokens, const char *originalPath);
 int executePathSpecifiedCmd(char *programPath, char **tokens);
-int fileExists(const char *filename);
+int fileExists(const char *filename, const char *originalPath);
 int handleBuiltins(char **tokens);
 #endif
 
