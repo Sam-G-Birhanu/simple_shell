@@ -9,7 +9,7 @@ int executeCommand(char **tokens)
 	char *programName = tokens[0];
 	char *token = strtok(original_path, ":");
 
-	printf("%s original path" ,original_path);
+	printf("%s FIRST EXEC original path" ,original_path);
 	if (strcmp(tokens[0], "exit") == 0) {
 		exit(0);
 	}
