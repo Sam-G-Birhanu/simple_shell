@@ -34,7 +34,7 @@ int executeCommand(char **tokens,  const char *originalPath)
 	{
 				printf("%s original path" ,original_path);
 
-		if (fileExists(programName)) {
+		if (fileExists(programName, originalPath)) {
 		    executePathSpecifiedCmd(programName, tokens);
 		    return -1;
 		}
@@ -53,7 +53,7 @@ int executeCommand(char **tokens,  const char *originalPath)
 		strcat(programPath, "/");
 		strcat(programPath, programName);
 
-		if (fileExists(programPath))
+		if (fileExists(programPath, originalPath))
 		{
 			pid_t child = fork();
 
