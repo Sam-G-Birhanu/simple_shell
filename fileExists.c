@@ -7,7 +7,7 @@
 
 int fileExists(const char *filename) {
     char *path = getenv("PATH");
-   /** printf("%s", path); **/
+    printf("%s \n", path);
     if (access(filename, F_OK) == 0) {
         return 1;  
     } else {
