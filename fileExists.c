@@ -7,6 +7,5 @@
 
 int fileExists(const char *filename) {
 	struct stat buffer;
-	int i = stat(filename, &buffer);
 	return (stat(filename, &buffer) == 0);
 }
