@@ -9,12 +9,12 @@ int prompt() {
 	{
 		char **tokens;
 		int i;
-
-		tokens = tokenize(line);
 		
 		printf("$ ");
 		
 		read = getline(&line, &leng, stdin);
+		tokens = tokenize(line);
+
 		if (read == -1)
 		{
 						printf("I am above getline");
