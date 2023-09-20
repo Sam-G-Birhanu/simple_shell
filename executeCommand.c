@@ -57,8 +57,10 @@ int executeCommand(char **tokens)
 
 			if (child == 0) {
 				char *args[MAX_ARGUMENTS];
-				args[0] = programPath;
 				int i;
+				
+				args[0] = programPath;
+				
 				
 				/** if (chdir(originalDirectory) == -1)
 				{
