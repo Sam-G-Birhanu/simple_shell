@@ -7,9 +7,11 @@ int executeCommand(char **tokens,  const char *originalPath)
 	char *original_path = strdup(originalPath);
 	int result = handleBuiltins(tokens);
 	char *programName = tokens[0];
-	char *token = strtok(original_path, ":");
+	char *token;
+		printf("%s FIRST EXEC original path" ,original_path);
+	token = strtok(original_path, ":");
 
-	printf("%s FIRST EXEC original path" ,original_path);
+	printf("%s SECON EXEC original path" ,original_path);
 	if (strcmp(tokens[0], "exit") == 0) {
 		exit(0);
 	}
