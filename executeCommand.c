@@ -95,9 +95,9 @@ int executeCommand(char **tokens) {
 				wait(&status);
 
 				/** if (WIFEXITED(status)) {
-					return 0; **/
+					return 0; 
 				}
-
+**/
 				free(programPath);
 				return 0;
 			}
