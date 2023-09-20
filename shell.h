@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 #include <pwd.h>
 #define MAX_ARGUMENTS 128
-extern char *ORIGINAL_PATH;
+/** extern char *ORIGINAL_PATH; **/
 int main(void);
 int prompt(void);
 char **tokenize(const char *command);
