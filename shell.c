@@ -7,6 +7,7 @@ char *ORIGINAL_PATH = NULL;
 int main()
 {
 	ORIGINAL_PATH = getenv("PATH");
+	printf("%s original path" , ORIGINAL_PATH);
 	prompt();
 	return 0;
 }
