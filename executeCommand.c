@@ -58,8 +58,8 @@ int executeCommand(char **tokens)
 			if (child == 0) {
 				char *args[MAX_ARGUMENTS];
 				args[0] = programPath;
-
 				int i;
+				
 				/** if (chdir(originalDirectory) == -1)
 				{
 					perror("chdir");
