@@ -2,9 +2,9 @@
 
 extern char **environ;
 extern char *ORIGINAL_PATH;
-int executeCommand(char **tokens)
+int executeCommand(char **tokens,  const char *originalPath)
 {
-	char *original_path = getenv("PATH");
+	char *original_path = strdup(originalPath);
 	int result = handleBuiltins(tokens);
 	char *programName = tokens[0];
 	char *token = strtok(original_path, ":");
