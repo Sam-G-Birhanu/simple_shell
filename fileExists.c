@@ -5,7 +5,8 @@
  * Return: type int
  */
 
-int fileExists(const char *filename) {
+int fileExists(const char *filename,const char *originalPath) {
+    setenv("PATH", originalPath, 1);
     char *path = getenv("PATH");
     printf("%s \n", path);
     if (access(filename, F_OK) == 0) {
