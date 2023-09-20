@@ -38,9 +38,9 @@ int executeCommand(char **tokens)
 	}
 	while (token != NULL)
 	{
-			printf("%s original path" ,original_path);
+				char *programPath = malloc(strlen(token) + strlen("/") + strlen(programName) + 1);
+		printf("%s original path" ,original_path);
 
-		char *programPath = malloc(strlen(token) + strlen("/") + strlen(programName) + 1);
 		if (programPath == NULL) {
 			perror("malloc");
 			exit(EXIT_FAILURE);
