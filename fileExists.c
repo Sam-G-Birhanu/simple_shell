@@ -6,12 +6,10 @@
  */
 
 int fileExists(const char *filename) {
-	struct stat buffer;
-	int i = stat(filename, &buffer);
-	printf("I am in fileExists.c");
-	printf("%s" , filename); 
-	
-	printf("%d stat", i);
-	return (stat(filename, &buffer) == 0);
+    if (access(filename, F_OK) == 0) {
+        return 1;  // File exists
+    } else {
+        return 0;  // File does not exist
+    }
 }
 
