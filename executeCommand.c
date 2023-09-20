@@ -2,9 +2,9 @@
 
 extern char **environ;
 extern char *ORIGINAL_PATH;
-int executeCommand(char **tokens) {
+int executeCommand(char **tokens)
+{
 	char *original_path = strdup(ORIGINAL_PATH);
-/**	   printf("%s this is the path \n", original_path); **/
 	if (strcmp(tokens[0], "exit") == 0) {
 		exit(0);
 	}
@@ -26,7 +26,6 @@ int executeCommand(char **tokens) {
 
 
 	char *programName = tokens[0];
-/**	char *path = getenv("PATH"); */
 	char *token = strtok(original_path, ":");
 	if (programName[0] == '/')
 	{
@@ -37,8 +36,7 @@ int executeCommand(char **tokens) {
 	}
 	while (token != NULL)
 	{
-	/**	printf("%s token \n" , token); **/
-	      /** token = strtok(NULL, ":");	*/
+	
 		char *programPath = malloc(strlen(token) + strlen("/") + strlen(programName) + 1);
 		if (programPath == NULL) {
 			perror("malloc");
@@ -49,10 +47,8 @@ int executeCommand(char **tokens) {
 		strcat(programPath, "/");
 		strcat(programPath, programName);
 
-/**		printf("%s original directory", originalDirectory); **/
-/**		printf("%s program path", programPath); **/
-
-		if (fileExists(programPath)) {
+		if (fileExists(programPath))
+		{
 			pid_t child = fork();
 
 			if (child == -1) {
@@ -61,14 +57,12 @@ int executeCommand(char **tokens) {
 			}
 
 			if (child == 0) {
-/**				printf("%s original directory", originalDirectory); **/
-		/**		printf("%s program path", programPath); **/
-
-/**				if (chdir(originalDirectory) == -1) {
+				if (chdir(originalDirectory) == -1)
+				{
 					perror("chdir");
 					exit(EXIT_FAILURE);
 				}
-**/
+
 				setenv("PATH", original_path, 1);
 
 				char *args[MAX_ARGUMENTS];
@@ -76,7 +70,8 @@ int executeCommand(char **tokens) {
 
 				int i;
 
-				for (i = 1; tokens[i] != NULL; i++) {
+				for (i = 1; tokens[i] != NULL; i++)
+				{
 					args[i] = tokens[i];
 				}
 
@@ -86,11 +81,14 @@ int executeCommand(char **tokens) {
 				free(programPath);
 				perror(".hsh");
 				exit(EXIT_FAILURE);
-			} else {
+			} 
+			else 
+			{
 				int status;
 				wait(&status);
 
-				if (WIFEXITED(status)) {
+				if (WIFEXITED(status)) 
+				{
 					printf("Child process exited with status %d\n", WEXITSTATUS(status));
 				}
 
