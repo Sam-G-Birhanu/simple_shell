@@ -30,7 +30,7 @@ int prompt(const char *originalPath) {
 			break;
 		}
 printf("I am above exc command");
-		executeCommand(tokens);
+		executeCommand(tokens, originalPath);
 		for (i = 0; tokens[i] != NULL; i++)
 		{
 			free(tokens[i]);
