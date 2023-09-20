@@ -1,6 +1,6 @@
 #include "shell.h"                                                                                                                                                        /**                                                                                                                                                                      * prompt - a function that prompts the user to input command                                                                                                            * tokens: is a parameter                                                                                                                                                * Return: it returns input type of int                                                                                                                                  */ 
 
-int prompt() {
+int prompt(const char *originalPath) {
 	char *line = NULL;
 	size_t leng = 0;
 	ssize_t read;
