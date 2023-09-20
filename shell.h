@@ -13,7 +13,7 @@
 int main(void);
 int prompt(const char *originalPath);
 char **tokenize(const char *command);
-int executeCommand(char **tokens);
+int executeCommand(char **tokens, const char *originalPath);
 int executePathSpecifiedCmd(char *programPath, char **tokens);
 int fileExists(const char *filename);
 int handleBuiltins(char **tokens);
