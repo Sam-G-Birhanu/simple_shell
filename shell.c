@@ -5,8 +5,8 @@
  */
 int main()
 {
-	char *ORIGINAL_PATH;
-	ORIGINAL_PATH = getenv("PATH");
+	/** char *ORIGINAL_PATH;
+	ORIGINAL_PATH = getenv("PATH"); **/
 	prompt();
 	return 0;
 }
