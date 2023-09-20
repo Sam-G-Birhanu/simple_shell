@@ -7,8 +7,9 @@ int prompt() {
 	
 	while (1)
 	{
-		char **tokens = tokenize(line);
-		int i
+		char **tokens;
+		tokens = tokenize(line);
+		int i;
 		
 		printf("$ ");
 		
