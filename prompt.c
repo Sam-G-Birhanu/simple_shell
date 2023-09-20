@@ -17,6 +17,7 @@ int prompt() {
 		read = getline(&line, &leng, stdin);
 		if (read == -1)
 		{
+						printf("I am above getline");
 			perror("getline");
 			break;
 		}
@@ -24,6 +25,7 @@ int prompt() {
 		line[strlen(line) - 1] = '\0';
 		if (tokens == NULL)
 		{
+			printf("I am above tokenize");
 			perror("tokenize");
 			break;
 		}
