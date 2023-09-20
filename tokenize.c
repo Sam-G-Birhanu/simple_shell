@@ -17,6 +17,11 @@ char **tokenize(const char *command)
 		perror("malloc");
 		return NULL;
 	}
+	if (command == NULL)
+	{
+		return NULL;
+	}
+
 	token = strtok((char *)command, " ");
 	while (token != NULL)
 	{
