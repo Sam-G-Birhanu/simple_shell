@@ -3,9 +3,8 @@
  * main - a function that executes other programs
  * Return: Exit status
  */
-char *ORIGINAL_PATH;
-int main()
+int main(void)
 {
 	prompt();
-	return 0;
+	return (0);
 }
