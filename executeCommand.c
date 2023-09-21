@@ -1,46 +1,31 @@
 #include "shell.h"
 
+
 /**
- * executeCommand - Ccpoies a string
- * @tokens: String to wich chars are going to be copied
- *
- * Return: Pointer to dest
+ * free_environment_array - Frees the memory allocated to hold "env vars"
  */
-int executeCommand(char **tokens)
+void free_environment_array(void)
 {
-	result = handleBuiltins(token);
-	programName = tokens[0];
-	token = strtok(original_path, ":");
+	free_dbl_ptr(__environ);
+}
 
-	while (token != NULL)
-	{
-		char *pPath = malloc(strlen(token) + strlen("/") + strlen(programName) + 1);
+/**
+ * build_environment_array - Builds the "env vars" array using dynamic memory
+*/
+void build_environment_array(void)
+{
+	int env_var_count = 0;
+	char **new_env_var;
 
-		if (fileExists(programPath))
-		{
-			pid_t child = fork();
+	while (__environ[env_var_count] != NULL)
+		env_var_count++;
 
-			if (child == 0)
-			{
-				char *args[MAX_ARGUMENTS];
-				int i;
+	new_env_var = allocate_memory(sizeof(char *) * (env_var_count + 1));
+	for (env_var_count = 0;  __environ[env_var_count] != NULL; env_var_count++)
+		new_env_var[env_var_count] = duplicate_string(__environ[env_var_count]);
 
-				setenv("PATH", original_path, 1);
-				args[0] = programPath;
-
-				for (i = 1; tokens[i] != NULL; i++)
-				{
-					args[i] = tokens[i];
-				}
-				args[i] = NULL;
-				execve(programPath, args, environ);
-				free(programPath);
-				perror(".hsh");
-				exit(EXIT_FAILURE);
-			} else
-			{
-				int status;
-
-				wait(&status);
-				free(programPath);
-				return (0); }}}}
+	/* Last element should be NULL */
+	new_env_var[env_var_count] = NULL;
+	/* Asign new memory dynamically allocated */
+	__environ = new_env_var;
+}

@@ -1,47 +1,79 @@
 #include "shell.h"
 
+
 /**
- * executePathSpecifiedCmd - a function that exceutes.
- * @tokens: pointer that points to command token
- * @programPath : this is the desription.
- * Return: 0 if successful
+ * add_node_to_end - Adds a new node to the end of a linked list.
+ *
+ * @head: A pointer to the head of the linked list.
+ * @str: The content of the string for the first node.
+ *
+ * Return: A pointer to the new node.
  */
-
-int executePathSpecifiedCmd(char *programPath, char **tokens)
+list_t *add_node_to_end(list_t **head, const char *str)
 {
-/**	    char *programName = tokens[0]; **/
-	    pid_t child = fork();
+	list_t *end_node, *tmp;
 
-	if (child == -1)
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
-	if (child == 0)
-	{
-		char *args[MAX_ARGUMENTS];
-		int i;
+	end_node = malloc(sizeof(list_t));
 
-		args[0] = programPath;
-	for (i = 1; tokens[i] != NULL; i++)
-	{
-		args[i] = tokens[i];
-	}
-	args[i] = NULL;
-	execve(programPath, args, environ);
-	perror(programPath);
-	exit(EXIT_FAILURE);
-	}
-	else
-	{
-		int status;
+	if (end_node == NULL)
+		return (NULL);
 
-		wait(&status);
+	end_node->str = strdup(str);
+	end_node->len = strlen(str);
+	end_node->next = NULL;
 
-	if (WIFEXITED(status))
+	if (*head == NULL)
 	{
-		printf("Child process exited with status %d\n", WEXITSTATUS(status));
+		*head = end_node;
+		return (*head);
 	}
+	tmp = *head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = end_node;
+	return (end_node);
+
+}
+
+/**
+ * free_linked_list - Frees the memory allocated for a linked list.
+ *
+ * @head: Head of first node.
+ *
+ * Return: void -> free the linked list.
+ */
+void free_linked_list(list_t *head)
+{
+	if (head == NULL)
+		return;
+	free_linked_list(head->next);
+	free(head->str);
+	free(head);
+}
+
+/**
+ * print_list_nodes - Prints the contents of a linked list to the console.
+ *
+ * @head: A pointer to the head of the linked list.
+ *
+ * Return: The number of nodes in the linked list.
+ */
+size_t print_list_nodes(const list_t *head)
+{
+	unsigned int number_nodes = 0;
+
+	while (head != NULL)
+	{
+		if (head->str)
+		{
+			puts(" ");
+			puts(head->str);
+			puts("\n");
+		}
+		else
+			puts("[0] (nil)\n");
+		head = head->next;
+		number_nodes++;
 	}
-	return (0);
+	return (number_nodes);
 }
