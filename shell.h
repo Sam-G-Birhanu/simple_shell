@@ -25,6 +25,15 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
+
+/* FLAGS */
+#define F_BUFF 1
+#define F_CMD_L 2
+#define F_CMDS 4
+
+
+
+
 /*linked lists*/
 size_t print_list(const list_t *h);
 list_t *add_node_end(list_t **head, const char *str);
@@ -54,9 +63,9 @@ int *get_history_lines_count();
 int validate_env_name(char *name);
 int is_valid_env_var_name(char *name);
 int get_env_index(char *name);
-void set_alias(char *alias_pair);
+
 int is_set_alias(char *alias_pair);
-int handle_alias_args(char **commands, list_t **out_addrs);
+int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs);
 int read_line(const int fd, char **line);
 int f_read_line(char **str, char **line, int fd);
 char *_strtok(char *str, char *delimiter);
@@ -94,6 +103,7 @@ int get_exit_status(char *buff);
 void dispatch_error(char *msg);
 void print_builtin_error(char *msg, char *arg);
 
+void set_alias(char *alias_pair);
 
 
 #endif
