@@ -96,7 +96,7 @@ char **parse_user_input(char *str_input, char *delimiter)
 	tkn_ptr = str_copy;
 	for (i = 0; i < args_count; i++)
 	{
-		token = _strtok(tkn_ptr, delimiter);
+		token = split_string(tkn_ptr, delimiter);
 		if (token == NULL)
 			break;
 		tkn_ptr = NULL;
@@ -125,7 +125,7 @@ int count_args(char *str_input, char *delimiter)
 	char *str_copy = dup_str(str_input);
 
 	tkn_ptr = str_copy;
-	while ((tkn = _strtok(tkn_ptr, delimiter)) != NULL)
+	while ((tkn = split_string(tkn_ptr, delimiter)) != NULL)
 	{
 		count++;
 		tkn_ptr = NULL;
