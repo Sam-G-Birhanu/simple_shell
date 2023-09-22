@@ -13,7 +13,7 @@ int change_directory(char *path)
 	char *_path = path;
 
 	if (strcmp(path, "-") == 0)
-		path = _getenv("OLDPWD");
+		path = get_environment_variable("OLDPWD");
 
 	if (path == NULL)
 	{
@@ -35,7 +35,7 @@ int change_directory(char *path)
 	{
 		free(path);
 		print_builtin_error("cd: can't change cd to ", _path);
-		set_process_exit_code(1);
+		set_custom_exit_code(1);
 		return (-1);
 	}
 	/* Update env variables */
