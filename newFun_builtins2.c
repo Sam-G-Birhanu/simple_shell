@@ -17,7 +17,8 @@ int change_directory(char *path)
 
 	if (path == NULL)
 	{
-		print_builtin_error("cd: OLDPWD not set", "");
+		printError("cd: OLDPWD not set", "");
+
 		return (-1);
 	}
 	/* Needed to avoid reading on freed memory */
@@ -27,14 +28,14 @@ int change_directory(char *path)
 	if (oldpwd == NULL)
 	{
 		free(path);
-		print_builtin_error("cd: couldn't get current dir", "");
+		printError("cd: couldn't get current dir", "");
 		return (-1);
 	}
 	/* Try to change the current dir */
 	if (chdir(path) == -1)
 	{
 		free(path);
-		print_builtin_error("cd: can't change cd to ", _path);
+		printError("cd: can't change cd to ", _path);
 		set_custom_exit_code(1);
 		return (-1);
 	}

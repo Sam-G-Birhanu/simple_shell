@@ -29,7 +29,7 @@ int handle_PATH(char **commands)
 	tkn_ptr = str_copy;
 	while (1)
 	{
-		tkn = _strtok(tkn_ptr, ":");
+		tkn = split_string(tkn_ptr, ":");
 		if (tkn == NULL)
 			break;
 		tkn_ptr = NULL;
