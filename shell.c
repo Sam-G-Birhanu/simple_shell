@@ -50,8 +50,8 @@ int main(int ac, char **av)
 	int fd;
 
 	FIRST_ARG = av[0];
-	signal(SIGINT, sigintHandler);
-	fd = handle_arguments(ac, av, &exec_file);
+	signal(SIGINT, sigint_H);
+	fd = handle_arg(ac, av, &exec_file);
 
 	/*update_count_lines();*/
 
