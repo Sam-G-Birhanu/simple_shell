@@ -28,7 +28,7 @@ int validate_env_var_name(char *env_name)
 {
 	if (env_name == NULL)
 	{
-		print_builtin_error("setenv: Needs 2 args", "");
+		printError("setenv: Needs 2 args", "");
 		return (-1);
 	}
 
