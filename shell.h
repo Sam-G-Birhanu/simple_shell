@@ -44,7 +44,6 @@ typedef struct list_s
 /*linked lists*/
 size_t print_list(const list_t *h);
 list_t *add_node_end(list_t **head, const char *str);
-void free_list(list_t *head);
 
 char *get_first_av(void);
 
@@ -69,7 +68,10 @@ list_t **get_hist_add();
 list_t **get_last_cmd_add();
 
 void handle_hist(char *buff);
+
 void free_hist(void);
+void free_list(list_t *head);
+
 void write_history(void);
 void update_line_count(void);
 int *get_line_count_alternate();
