@@ -116,7 +116,7 @@ int handle_exit(char *buff, char **cmds_list, char **commands);
 int get_exit_status(char *buff);
 
 /* Error handlers */
-void dispatch_error(char *msg);
+void dispatchError(char *msg)
 void print_builtin_error(char *msg, char *arg);
 
 

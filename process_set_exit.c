@@ -23,7 +23,7 @@ int *get_exit_code_alternate()
  * set_exit_code_alternate - Sets a new value for the exit_code_alternate variable
  * @code: The integer value representing the alternate exit code
  */
-void set_exit_code_alternate(int code)
+void set_custom_exit_code(int code)
 {
 	exit_code_alternate = code; 
 }
