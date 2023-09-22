@@ -36,7 +36,7 @@ int exit_shell(char *buff, char **cmds_list, char **commands)
 	}
 
 	/* the exit status passed was illegal */
-	print_builtin_error("exit: Illegal number: ", commands[1]);
+	printError("exit: Illegal number: ", commands[1]);
 	return (-1);
 }
 
