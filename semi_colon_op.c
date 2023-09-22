@@ -116,8 +116,8 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 		execve(commands[0], commands, __environ);
 		if (_err != 0)
 			handle_cmd_not_found(buff, cmds_list, commands, first_av);
-		free_allocs(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatch_error(first_av);
+		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+		dispatchError(first_av);
 	}
 	wait(status);
 	*status = WEXITSTATUS(*status);
