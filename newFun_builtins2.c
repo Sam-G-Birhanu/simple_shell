@@ -22,6 +22,8 @@
 
 		return (-1);
 	}
+ **/
+/**
 	/* Needed to avoid reading on freed memory */
 	path = dup_str(path);
 	/* store this dir in case of update */
@@ -45,7 +47,7 @@
 	set_custom_exit_code(0);
 	return (1);
 }
-
+**/
 **/
 /**
  * print_environment - Prints the environment variables to stdout
