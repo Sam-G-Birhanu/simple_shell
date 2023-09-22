@@ -81,5 +81,5 @@ void handle_hist(char *buff)
 */
 void free_hist(void)
 {
-	free_list(*get_hist_add());
+	free_linked_list(*get_hist_add());
 }
