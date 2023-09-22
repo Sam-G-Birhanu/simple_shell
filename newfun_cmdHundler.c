@@ -25,7 +25,7 @@ int handle_PATH(char **commands)
 	if (path_dirs == NULL)
 		return (127);
 
-	str_copy = duplicate_string(path_dirs);
+	str_copy = dup_str(path_dirs);
 	tkn_ptr = str_copy;
 	while (1)
 	{
@@ -60,7 +60,7 @@ char *getpath(char *dir, char *filename)
 	int filename_len = _strleng(filename);
 	char *path;
 
-	path = allocate_memory(sizeof(char *) * (dir_len + filename_len + 2));
+	path = alloc_mem(sizeof(char *) * (dir_len + filename_len + 2));
 
 	strcpy(path, dir);
 	strcat(path, "/");
@@ -90,9 +90,9 @@ char **parse_user_input(char *str_input, char *delimiter)
 	/* Count the number of arguments present in the input */
 	args_count = count_args(str_input, delimiter);
 	/* Allocate memory to hold each argument as a string */
-	args = allocate_memory(sizeof(char *) * (args_count + 1));
+	args = alloc_mem(sizeof(char *) * (args_count + 1));
 	/* Store each argument as a string */
-	str_copy = duplicate_string(str_input);
+	str_copy = dup_str(str_input);
 	tkn_ptr = str_copy;
 	for (i = 0; i < args_count; i++)
 	{
@@ -101,7 +101,7 @@ char **parse_user_input(char *str_input, char *delimiter)
 			break;
 		tkn_ptr = NULL;
 		/* store command as single string */
-		args[i] = duplicate_string(token);
+		args[i] = dup_str(token);
 	}
 	/* set the last element of array of arguments to NULL */
 	args[i] = NULL;
@@ -122,7 +122,7 @@ int count_args(char *str_input, char *delimiter)
 {
 	char *tkn, *tkn_ptr;
 	int count = 0;
-	char *str_copy = duplicate_string(str_input);
+	char *str_copy = dup_str(str_input);
 
 	tkn_ptr = str_copy;
 	while ((tkn = _strtok(tkn_ptr, delimiter)) != NULL)
