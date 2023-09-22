@@ -22,7 +22,7 @@ void handle_variable_substitution(char **command_args)
 		if (_strcmp(&command_args[i][1], "?") == 0)
 		{
 			free(command_args[i]);
-			command_args[i] = num_to_str(*process_exit_code());
+			command_args[i] = num_to_str(*get_exit_code_alternate()); 
 			return;
 		}
 

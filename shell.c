@@ -63,7 +63,7 @@ int main(void)
 		if (read == EOF)
 		{
 			free(buff);
-			exit(*process_exit_code());
+			exit(*get_exit_code_alternate());
 		}
 		/*handle_history(buff);*/
 		/* Remove comments & '\n' char from buffer */
@@ -75,7 +75,7 @@ int main(void)
 	free(buff);
 	if (exec_file)
 		close(fd);
-	return (*process_exit_code());
+	return (*get_exit_code_alternate());
 }
 
 
