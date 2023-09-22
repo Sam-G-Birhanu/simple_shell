@@ -58,10 +58,10 @@ int set_env(char *name, char *value)
 
 	new_var_len = _strleng(name) + _strleng(value) + 2;
 	/* store the env var either if it exists or it needs to be overwritten */
-	__environ[env_index] = allocate_mem(sizeof(char) * new_var_len);
+	__environ[env_index] = alloc_mem(sizeof(char) * new_var_len);
 	_strcpy(__environ[env_index], name);
-	_strcat(__environ[env_index], "=");
-	_strcat(__environ[env_index], value);
+	str_cat(__environ[env_index], "=");
+	str_cat(__environ[env_index], value);
 
 	set_custom_exit_code(0);
 	return (1);
