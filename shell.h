@@ -111,11 +111,11 @@ void *fun_reallocate(void *ptr, unsigned int former_size, unsigned int current_s
 int handle_builtins(char **commands);
 
 /* handle_enter */
-int handle_enter(char **commands);
+int handleEnter(char **commands);
 char *remove_comment();
 
 /* Exit handlers */
-int handle_exit(char *buff, char **cmds_list, char **commands);
+int exit_shell(char *buff, char **cmds_list, char **commands);
 int get_exit_status(char *buff);
 
 /* Error handlers */
