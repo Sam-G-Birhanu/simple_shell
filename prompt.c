@@ -24,7 +24,7 @@ char *str_ncat(char *str1, const char *str2, size_t n)
 	size_t i;
 	size_t j;
 
-	i = strleng(str1);
+	i = _strleng(str1);
 	j = 0;
 	while (str2[j] && j < n)
 		str1[i++] = str2[j++];
