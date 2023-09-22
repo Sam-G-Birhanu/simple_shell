@@ -55,7 +55,7 @@ int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs
 		else /* Print errors */
 		{
 			status = -1;
-			set_process_exit_code(1);
+			set_custom_exit_code(1);
 			puts("alias: ");
 			puts(alias_args[i]);
 			puts(" not found\n");
