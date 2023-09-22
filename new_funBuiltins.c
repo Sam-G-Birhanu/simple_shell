@@ -34,7 +34,7 @@ int validate_env_var_name(char *env_name)
 
 	if (!is_valid_env_var_name(env_name))
 	{
-		print_builtin_error("setenv: Invalid name ", env_name);
+		printError("setenv: Invalid name ", env_name);
 		return (-1);
 	}
 
