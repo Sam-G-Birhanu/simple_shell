@@ -49,7 +49,7 @@ int _hist(void)
 	list_t *curr;
 	char *strNum;
 	int i, len;
-	int count = *get_history_lines_count() % 4096;
+	int count = *get_line_count_alternate() % 4096;
 
 	for (curr = *get_hist_add(); curr != NULL; curr = curr->next)
 	{
