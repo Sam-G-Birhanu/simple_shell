@@ -118,6 +118,8 @@ int _strcmp(const char *str1, const char *str2);
 int _strleng(const char *str);
 char *_strdup(const char *str1);
 int _strncmp(const char *str1, const char *str2, size_t n);
+char *str_chr(const char *str, int char_to_search);
+
 
 
 
