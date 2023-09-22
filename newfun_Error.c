@@ -8,13 +8,13 @@
 */
 void printError(char *msg, char *arg)
 {
-	int len = strlen(msg);
+	int len = strleng(msg);
 	char *first_av = get_first_av();
 
-	write(STDERR_FILENO, first_av, strlen(first_av));
+	write(STDERR_FILENO, first_av, strleng(first_av));
 	write(STDERR_FILENO, ": 1: ", 5);
 	write(STDERR_FILENO, msg, len);
-	write(STDERR_FILENO, arg, strlen(arg));
+	write(STDERR_FILENO, arg, strleng(arg));
 	write(STDERR_FILENO, "\n", 1);
 	set_custom_exit_code(2);
 }
@@ -25,7 +25,7 @@ void printError(char *msg, char *arg)
 */
 void dispatchError(char *msg)
 {
-	/* int len = _strlen(msg); */
+	/* int len = _strleng(msg); */
 	perror(msg);
 	/*write(STDERR_FILENO, msg, len);*/
 	/*write(STDERR_FILENO,": not found\n", 12);*/

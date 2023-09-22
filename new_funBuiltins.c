@@ -9,7 +9,7 @@
 int get_env_var_index(char *env_name)
 {
 	int i;
-	int len = strlen(env_name);
+	int len = strleng(env_name);
 
 	for (i = 0; __environ[i] != NULL; i++)
 		if (strncmp(__environ[i], env_name, len) == 0)

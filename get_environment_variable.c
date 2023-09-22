@@ -14,7 +14,7 @@ char *get_environment_variable(char *var_name)
 	{
 		if (_strncmp(__environ[i], var_name, _strleng(var_name)) == 0)
 		{
-			return (&__environ[i][_strlen(var_name) + 1]);
+			return (&__environ[i][_strleng(var_name) + 1]);
 		}
 	}
 
