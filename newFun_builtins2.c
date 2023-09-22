@@ -40,7 +40,7 @@ int change_directory(char *path)
 	}
 	/* Update env variables */
 	free(path);
-	set_process_exit_code(0);
+	set_custom_exit_code(0);
 	return (1);
 }
 
@@ -59,5 +59,5 @@ void print_environment(void)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 
-	set_process_exit_code(0);
+	set_custom_exit_code(0);
 }
