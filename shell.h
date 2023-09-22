@@ -41,10 +41,10 @@ void free_list(list_t *head);
 char *get_first_av(void);
 void __attribute__((constructor)) build_dynamic_environ(void);
 void __attribute__((destructor)) free_dynamic_environ(void);
-char *_getenv(char *name);
-void handle_var_replacement(char **commands);
-int *process_exit_code();
-void set_process_exit_code(int code);
+char *get_environment_variable(char *var_name);
+void handle_variable_substitution(char **command_args);
+int *get_exit_code_alternate()
+void set_custom_exit_code(int code);
 void env(void);
 int _setenv(char *name, char *value);
 int _unsetenv(char *name);
@@ -58,8 +58,8 @@ list_t **get_last_cmd_addrss();
 void handle_history(char *buff);
 void free_history(void);
 void write_history(void);
-void update_count_lines(void);
-int *get_history_lines_count();
+void update_line_count(void)
+int *get_line_count_alternate()
 int validate_env_name(char *name);
 int is_valid_env_var_name(char *name);
 int get_env_index(char *name);
