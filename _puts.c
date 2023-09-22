@@ -8,7 +8,7 @@
 */
 int _puts(char *strng)
 {
-	int leng = _strlen(strng);
+	int leng = _strleng(strng);
 
 	write(STDOUT_FILENO, strng, leng);
 
