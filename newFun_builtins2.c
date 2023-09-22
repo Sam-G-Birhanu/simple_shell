@@ -21,7 +21,7 @@ int change_directory(char *path)
 		return (-1);
 	}
 	/* Needed to avoid reading on freed memory */
-	path = duplicate_string(path);
+	path = dup_str(path);
 	/* store this dir in case of update */
 	oldpwd = getcwd(buff, 1024);
 	if (oldpwd == NULL)
