@@ -37,7 +37,7 @@ void handle_variable_substitution(char **command_args)
 		if (env_value != NULL)
 		{
 			free(command_args[i]);
-			command_args[i] = duplicate_string(env_value);
+			command_args[i] = dup_str(env_value);
 		}
 	}
 }
