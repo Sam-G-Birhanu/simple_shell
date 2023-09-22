@@ -41,13 +41,13 @@ char *_strdup(const char *str1)
 }
 
 /**
- * _strncmp - compare if is equal 2 strings, first n chars
+ * _strncmp - compare first n chars of 2 strings
  * @str1: string1
  * @str2: string2
  * @n: n first characters
  * Return: 0 success; else pointer
  */
-int	_strncmp(const char *str1, const char *str2, size_t n)
+int _strncmp(const char *str1, const char *str2, size_t n)
 {
 	size_t i;
 
@@ -61,7 +61,7 @@ int	_strncmp(const char *str1, const char *str2, size_t n)
 }
 
 /**
- * _strcmp - compare if is equal 2 strings
+ * _strcmp - compare equality of 2 strings
  * @s1: string1
  * @s2: string2
  * Return: 0 success; else pointer
@@ -72,12 +72,12 @@ int _strcmp(const char *str1, const char *str2)
 }
 
 /**
- * num_to_str - Convert a number to string format
+ * int_to_str - Convert a number to string format
  * @num: Number to be converted
  *
  * Return: Pointer to string representation of "num"
 */
-char *num_to_str(int num)
+char *int_to_str(int num)
 {
 	int num_rev = 0;
 	int i, digits = 0;
