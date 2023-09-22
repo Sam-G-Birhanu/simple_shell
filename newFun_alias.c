@@ -30,7 +30,7 @@ int handle_alias_args(char **alias_args, list_t **out_addrs)
 	int i, len, was_alias;
 	int status = 0;
 	list_t *curr;
-	list_t **alias_addres = get_alias_head();
+	list_t **alias_addrs = get_alias_head();
 
 
 	set_custom_exit_code(0);
@@ -39,7 +39,7 @@ int handle_alias_args(char **alias_args, list_t **out_addrs)
 		was_alias = 0;
 		len = _strleng(alias_args[i]);
 		/* Check that if user is trying to print an alias */
-		for (curr = *alias_addres; curr != NULL; curr = curr->next)
+		for (curr = *alias_addrs; curr != NULL; curr = curr->next)
 		{
 			if (strncmp(curr->str, alias_args[i], len) == 0 && (curr->str)[len] == '=')
 			{ /* Means to list an alias */
