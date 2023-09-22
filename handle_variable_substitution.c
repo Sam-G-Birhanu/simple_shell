@@ -29,7 +29,7 @@ void handle_variable_substitution(char **command_args)
 		if (_strcmp(&command_args[i][1], "$") == 0)
 		{
 			free(command_args[i]);
-			command_args[i] = num_to_str(getpid());
+			command_args[i] = int_to_str(getpid());
 			return;
 		}
 
