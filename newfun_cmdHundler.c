@@ -21,7 +21,7 @@ int handle_PATH(char **commands)
 	if (access(commands[0], F_OK) == 0)
 		return (0);
 
-	path_dirs = _getenv("PATH");
+	path_dirs = get_environment_variable("PATH");
 	if (path_dirs == NULL)
 		return (127);
 

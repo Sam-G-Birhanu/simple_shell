@@ -74,7 +74,7 @@ int other_builtins(char **commands)
 		char *path = commands[1];
 
 		if (commands[1] == NULL)
-			path = _getenv("HOME");
+			path = get_environment_variable("HOME");
 
 		if (path == NULL)
 			path = "/";
@@ -91,7 +91,7 @@ int other_builtins(char **commands)
 
 	if (strcmp(commands[0], "help") == 0)
 	{
-		_help(commands);
+		get_help(commands);
 		return (1);
 	}
 

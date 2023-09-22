@@ -12,7 +12,7 @@ char *get_environment_variable(char *var_name)
 
 	for (i = 0; __environ[i] != NULL; i++)
 	{
-		if (_strncmp(__environ[i], var_name, _strlen(var_name)) == 0)
+		if (_strncmp(__environ[i], var_name, _strleng(var_name)) == 0)
 		{
 			return (&__environ[i][_strlen(var_name) + 1]);
 		}

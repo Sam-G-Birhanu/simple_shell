@@ -7,7 +7,7 @@ void write_history_to_file_in_home_dir(void)
 {
 	char *home;
 
-	home = _getenv("HOME");
+	home = get_environment_variable("HOME");
 	if (home == NULL)
 		home = "/";
 }

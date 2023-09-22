@@ -53,7 +53,7 @@ int _hist(void)
 
 	for (curr = *get_hist_add(); curr != NULL; curr = curr->next)
 	{
-		strNum = num_to_str(count++);
+		strNum = int_to_str(count++);
 		len = _puts(strNum);
 		for (i = len; i < 7; i++) /* 5 per number, 2 aditional */
 			_puts(" ");
