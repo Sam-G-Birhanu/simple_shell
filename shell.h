@@ -37,7 +37,7 @@ typedef struct list_s
 
 /*linked lists*/
 size_t print_list(const list_t *h);
-list_t *add_node_to_end(list_t **head, const char *str);
+list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 char *get_first_av(void);
 void __attribute__((constructor)) build_dynamic_environ(void);
