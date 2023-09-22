@@ -70,7 +70,8 @@ int fun_read_line(const int f_d, char **line);
 int new_read_line(char **str, char **line, int f_d); 
 char *_strtok(char *str, char *delimiter);
 int _getline(char **buffer, size_t *buf_size, FILE *stream);
-char *_strcpy(char *dest, char *src);
+char *_strcpy(char *destination, char *source)
+
 char *_strncpy(char *dest, char *src, int n);
 
 /* Command handlers */
