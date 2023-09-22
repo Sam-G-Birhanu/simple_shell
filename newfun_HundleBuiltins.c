@@ -99,7 +99,7 @@ int other_builtins(char **commands)
 	{
 		if (commands[1] != NULL)
 		{
-			print_builtin_error("history: No args allowed", "");
+			printError("history: No args allowed", "");
 			return (1);
 		}
 

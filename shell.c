@@ -68,7 +68,7 @@ int main(void)
 		/*handle_history(buff);*/
 		/* Remove comments & '\n' char from buffer */
 		buff = handle_comment(buff);
-		_strtok(buff, "\n");
+		split_string(buff, "\n");
 		/* Handling_semicolon, ||, && and executes inside of the function */
 	}
 	/* Free buffer memory */
