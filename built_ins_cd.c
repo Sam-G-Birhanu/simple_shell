@@ -30,7 +30,7 @@ int set_env(char *name, char *value)
 	if (validate_env_name(name) == -1)
 		return (-1);
 
-	env_index = get_env_index(name);
+	env_index = get_env_var_index(name);
 	if (env_index == -1)
 	{/* var doen't exist, SO CREATE IT */
 		int env_count = 0;
@@ -76,7 +76,7 @@ int unset_env(char *name)
 {
 	int env_index, i;
 
-	env_index = get_env_index(name);
+	env_index = get_env_var_index(name);
 	if (env_index >= 0)
 	{/* var exists, We can unset it */
 		free(__environ[env_index]);
@@ -107,7 +107,7 @@ int change_directory(char *path)
 	char *_path = path;
 
 	if (_strcmp(path, "-") == 0)
-		path = _getenv("OLDPWD");
+		path = get_environment_variable("OLDPWD");
 
 	if (path == NULL)
 	{
