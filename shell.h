@@ -97,7 +97,7 @@ int count_args(char *str_input, char *delimiter);
 
 /* Memory management */
 void *alloc_mem(unsigned int bytes)
-char *duplicate_string(char *str);
+char *dup_str(char *str)
 void free_dbl_ptr(char **dbl_ptr);
 void free_allocs(char *buff, char **cmds_list, char **commands, int flags);
 
