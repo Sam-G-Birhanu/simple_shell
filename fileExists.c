@@ -31,7 +31,7 @@ void *alloc_mem(unsigned int bytes)
 	char *new_mem = malloc(bytes);
 
 	if (new_mem == NULL)
-		dispatch_error("Error while allocating memory\n");
+		dispatchError("Error while allocating memory\n");
 
 	return (new_mem);
 }
@@ -48,7 +48,8 @@ char *dup_str(char *str)
 	char *str_copy = strdup(str);
 
 	if (str_copy == NULL)
-		dispatch_error("Error while making copy of string");
+		dispatchError("Error while making copy of string"); 
+
 
 	return (str_copy);
 }
