@@ -85,7 +85,7 @@ char *duplicate_string(char *str);
 void free_dbl_ptr(char **dbl_ptr);
 void free_allocs(char *buff, char **cmds_list, char **commands, int flags);
 
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void *fun_reallocate(void *ptr, unsigned int former_size, unsigned int current_size);
 
 /* handle_builtins */
 int handle_builtins(char **commands);
