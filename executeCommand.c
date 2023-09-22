@@ -20,7 +20,7 @@ void build_environment_array(void)
 	while (__environ[env_var_count] != NULL)
 		env_var_count++;
 
-	new_env_var = allocate_memory(sizeof(char *) * (env_var_count + 1));
+	new_env_var = alloc_mem(sizeof(char *) * (env_var_count + 1));
 	for (env_var_count = 0;  __environ[env_var_count] != NULL; env_var_count++)
 		new_env_var[env_var_count] = duplicate_string(__environ[env_var_count]);
 
