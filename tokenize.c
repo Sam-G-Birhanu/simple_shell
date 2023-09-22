@@ -38,7 +38,7 @@ char *str_join(char const *str1, char const *str2)
 
 	if (!str1 || !str2)
 		return (NULL);
-	len3 = strleng(str1) + strleng(str2);
+	len3 = _strleng(str1) + _strleng(str2);
 	str3 = malloc(len3 + 1);
 	if (str3 == NULL)
 		return (NULL);
