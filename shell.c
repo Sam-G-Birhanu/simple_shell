@@ -67,7 +67,7 @@ int main(void)
 		}
 		/*handle_history(buff);*/
 		/* Remove comments & '\n' char from buffer */
-		buff = handle_comment(buff);
+		buff = remove_comment(buff);
 		split_string(buff, "\n");
 		/* Handling_semicolon, ||, && and executes inside of the function */
 	}

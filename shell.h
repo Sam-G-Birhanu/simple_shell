@@ -58,7 +58,7 @@ void set_custom_exit_code(int code);
 void env(void);
 int set_env(char *name, char *value);
 int unset_env(char *name);
-int _cd(char *path);
+int change_directory(char *path);
 int _alias(char **commands);
 int fun_help(char **commands);
 int _hist(void);
