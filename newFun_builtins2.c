@@ -6,7 +6,8 @@
  *
  * Return: 1 on success, -1 on error
 */
-int change_directory(char *path)
+
+/** int change_directory(char *path)
 {
 	char buff[1024];
 	char *oldpwd;
@@ -45,7 +46,7 @@ int change_directory(char *path)
 	return (1);
 }
 
-
+**/
 /**
  * print_environment - Prints the environment variables to stdout
 */
