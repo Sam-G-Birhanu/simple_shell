@@ -32,7 +32,7 @@ int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs
 	int status = 0;
 	list_t *curr;
 
-	set_process_exit_code(0);
+	set_custom_exit_code(0);
 	for (i = 1; alias_args[i] != NULL; i++)
 	{
 		was_alias = 0;
