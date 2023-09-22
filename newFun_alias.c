@@ -95,7 +95,7 @@ void handle_aliases(char **commands, list_t **alias_head)
 			tmp_buff[alias_len] = '\0';
 			/* Free and then update the command */
 			free(commands[0]);
-			commands[0] = duplicate_string(tmp_buff);
+			commands[0] = dup_str(tmp_buff);
 			break;
 		}
 	}
