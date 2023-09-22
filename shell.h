@@ -106,4 +106,13 @@ void print_builtin_error(char *msg, char *arg);
 void set_alias(char *alias_pair);
 int _puts(char *strng);
 
+char *int_to_str(int num);
+int _strcmp(const char *str1, const char *str2);
+int _strleng(const char *str);
+char *_strdup(const char *str1);
+int _strncmp(const char *str1, const char *str2, size_t n)
+
+
+
+
 #endif
