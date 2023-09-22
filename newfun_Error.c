@@ -16,7 +16,7 @@ void printError(char *msg, char *arg)
 	write(STDERR_FILENO, msg, len);
 	write(STDERR_FILENO, arg, strlen(arg));
 	write(STDERR_FILENO, "\n", 1);
-	set_process_exit_code(2);
+	set_custom_exit_code(2);
 }
 
 /**
