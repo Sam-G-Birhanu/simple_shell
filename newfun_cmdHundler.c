@@ -85,7 +85,7 @@ char **parse_user_input(char *str_input, char *delimiter)
 	char *str_copy;
 
 	if (str_input == NULL)
-		dispatch_error("Error while parsing the command\n");
+		dispatchError("Error while parsing the command\n");
 
 	/* Count the number of arguments present in the input */
 	args_count = count_args(str_input, delimiter);
