@@ -33,7 +33,7 @@ void handle_variable_substitution(char **command_args)
 			return;
 		}
 
-		env_value = _getenv(&command_args[i][1]);
+		env_value = get_environment_variable(&command_args[i][1]);
 		if (env_value != NULL)
 		{
 			free(command_args[i]);
