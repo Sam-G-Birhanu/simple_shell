@@ -16,7 +16,7 @@ void update_line_count(void)
 	if (getcwd(current_directory, 512) == NULL)
 		return;
 
-	home_directory = _getenv("HOME");
+	home_directory = get_environment_variable("HOME");
 	if (home_directory == NULL)
 		home_directory = "";
 
