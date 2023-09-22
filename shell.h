@@ -1,16 +1,25 @@
 #ifndef SHELL
 #define SHELL
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <stddef.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <pwd.h>
+#include <dirent.h>
+#include <signal.h>
+
 #define MAX_ARGUMENTS 128
 
+/* FLAGS */
+#define F_BUFF 1
+#define F_CMD_L 2
+#define F_CMDS 4
 
 /**
  * struct list_s - singly linked list
@@ -27,10 +36,7 @@ typedef struct list_s
 } list_t;
 
 
-/* FLAGS */
-#define F_BUFF 1
-#define F_CMD_L 2
-#define F_CMDS 4
+
 
 
 
@@ -39,7 +45,11 @@ typedef struct list_s
 size_t print_list(const list_t *h);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
+
 char *get_first_av(void);
+
+
+
 void __attribute__((constructor)) build_dynamic_environ(void);
 void __attribute__((destructor)) free_dynamic_environ(void);
 char *get_environment_variable(char *var_name);
@@ -53,27 +63,31 @@ int _cd(char *path);
 int _alias(char **commands);
 int get_help(char **commands);
 int _hist(void);
+
 list_t **get_alias_head();
 list_t **get_hist_add();
 list_t **get_last_cmd_add();
+
 void handle_hist(char *buff);
 void free_hist(void);
 void write_history(void);
 void update_line_count(void);
 int *get_line_count_alternate();
+
 int validate_env_name(char *name);
 int is_valid_env_var_name(char *name);
 int get_env_index(char *name);
-
+void set_alias(char *alias_pair);
 int is_set_alias(char *alias_pair);
 int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs);
 int fun_read_line(const int f_d, char **line);
 int new_read_line(char **str, char **line, int f_d); 
+
 char *_strtok(char *str, char *delimiter);
 int _getline(char **buffer, size_t *buf_size, FILE *stream);
 char *_strcpy(char *destination, char *source);
-
 char *_strncpy(char *destination, char *source, int num);
+
 /* Command handlers */
 int handle_PATH(char **commands);
 char *getpath(char *dir, char *filename);
@@ -104,21 +118,25 @@ int get_exit_status(char *buff);
 void dispatch_error(char *msg);
 void print_builtin_error(char *msg, char *arg);
 
-void set_alias(char *alias_pair);
-int _puts(char *strng);
-void mem_del(void **ap);
-void str_del(char **as);
-char *str_join(char const *str1, char const *str2);
-char *str_sub(char const *str, unsigned int start, size_t len);
 
+void mem_del(void **ap);
+
+
+int _strleng(const char *str);
+char *_strdup(const char *str1);
+char *str_chr(const char *str, int char_to_search);
 
 
 char *int_to_str(int num);
-int _strcmp(const char *str1, const char *str2);
-int _strleng(const char *str);
-char *_strdup(const char *str1);
 int _strncmp(const char *str1, const char *str2, size_t n);
-char *str_chr(const char *str, int char_to_search);
+int _puts(char *strng);
+
+
+
+char *str_join(char const *str1, char const *str2);
+char *str_sub(char const *str, unsigned int start, size_t len);
+void str_del(char **as);
+int _strcmp(const char *str1, const char *str2);
 
 
 
