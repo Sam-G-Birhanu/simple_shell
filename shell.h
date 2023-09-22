@@ -70,8 +70,7 @@ list_t **get_last_cmd_add();
 void handle_hist(char *buff);
 
 void free_hist(void);
-void free_list(list_t *head);
-
+free_linked_list(list_t *head);
 void write_history(void);
 void update_line_count(void);
 int *get_line_count_alternate();
