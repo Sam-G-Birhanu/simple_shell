@@ -72,7 +72,7 @@ char *_strtok(char *str, char *delimiter);
 int _getline(char **buffer, size_t *buf_size, FILE *stream);
 char *_strcpy(char *destination, char *source);
 
-char *_strncpy(char *destination, char *source, int num)
+char *_strncpy(char *destination, char *source, int num);
 /* Command handlers */
 int handle_PATH(char **commands);
 char *getpath(char *dir, char *filename);
