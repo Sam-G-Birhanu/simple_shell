@@ -110,7 +110,7 @@ char *int_to_str(int num);
 int _strcmp(const char *str1, const char *str2);
 int _strleng(const char *str);
 char *_strdup(const char *str1);
-int _strncmp(const char *str1, const char *str2, size_t n)
+int _strncmp(const char *str1, const char *str2, size_t n);
 
 
 
