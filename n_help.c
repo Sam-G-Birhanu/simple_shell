@@ -2,65 +2,65 @@
 #define BUFF_SIZE 32
 
 /**
- * fun_read_line - print a line of fd
- * @fd: file descriptor
+ * fun_read_line - print a line of f_d
+ * @f_d: file descriptor
  * @line: line of text
  * Return: execution of read_line: 1 if success
  */
-int fun_read_line(const int fd, char **line)
+int fun_read_line(const int f_d, char **line)
 {
 	int			reader;
 	char		*tmp;
 	char		buffer[BUFF_SIZE + 1];
 	static char	*str[4864];
 
-	if (fd < 0 || BUFF_SIZE <= 0 || line == NULL || read(fd, buffer, 0) < 0)
+	if (f_d < 0 || BUFF_SIZE <= 0 || line == NULL || read(f_d, buffer, 0) < 0)
 		return (-1);
-	while ((reader = read(fd, buffer, BUFF_SIZE)) > 0)
+	while ((reader = read(f_d, buffer, BUFF_SIZE)) > 0)
 	{
 		buffer[reader] = '\0';
-		if (!str[fd])
-			str[fd] = _strdup(buffer);
+		if (!str[f_d])
+			str[f_d] = _strdup(buffer);
 		else
 		{
-			tmp = f_strjoin(str[fd], buffer);
-			free(str[fd]);
-			str[fd] = tmp;
+			tmp = f_strjoin(str[f_d], buffer);
+			free(str[f_d]);
+			str[f_d] = tmp;
 		}
-		if (_strchr(str[fd], '\n'))
+		if (_strchr(str[f_d], '\n'))
 			break;
 	}
-	if (str[fd] == NULL && reader == 0)
+	if (str[f_d] == NULL && reader == 0)
 		return (-1);
-	return (f_read_line(str, line, fd));
+	return (f_read_line(str, line, f_d));
 }
 
 /**
- * new_read_line - read a line from fd
+ * new_read_line - read a line from f_d
  * @str: grip of documment
- * @fd: file descriptor
+ * @f_d: file descriptor
  * @line: line of text
  * Return: 1 if success
  */
-int	new_read_line(char **str, char **line, int fd)
+int	new_read_line(char **str, char **line, int f_d)
 {
 	char	*tmp;
 	int		count;
 
 	count = 0;
-	while (str[fd][count] != '\0' && str[fd][count] != '\n')
+	while (str[f_d][count] != '\0' && str[f_d][count] != '\n')
 		count++;
-	*line = f_strsub(str[fd], 0, count);
-	if (str[fd][count] == '\n')
+	*line = f_strsub(str[f_d], 0, count);
+	if (str[f_d][count] == '\n')
 	{
-		tmp = _strdup(&str[fd][count + 1]);
-		free(str[fd]);
-		str[fd] = tmp;
-		if (str[fd][0] == '\0')
-			f_strdel(&str[fd]);
+		tmp = _strdup(&str[f_d][count + 1]);
+		free(str[f_d]);
+		str[f_d] = tmp;
+		if (str[f_d][0] == '\0')
+			f_strdel(&str[f_d]);
 	}
 	else
-		f_strdel(&str[fd]);
+		f_strdel(&str[f_d]);
 	return (1);
 }
 
@@ -72,21 +72,21 @@ int	new_read_line(char **str, char **line, int fd)
 int fun_help(char **commands)
 {
 
-	int fd, i = 1, result = -1;
+	int f_d, i = 1, result = -1;
 	char *line = NULL;
 
 	while (commands[i])
 	{
-		fd = open(commands[i], O_RDONLY);
-		if (fd != -1)
+		f_d = open(commands[i], O_RDONLY);
+		if (f_d != -1)
 		{
 			result = 0;
-			while (read_line(fd, &line) == 1)
+			while (read_line(f_d, &line) == 1)
 			{
 				puts(line);
 				free(line);
 			}
-			close(fd);
+			close(f_d);
 		}
 		i++;
 	}
