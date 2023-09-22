@@ -27,7 +27,7 @@ int set_env(char *name, char *value)
 {
 	int env_index, new_var_len;
 
-	if (validate_env_name(name) == -1)
+	if (validate_env_var_name(name) == -1)
 		return (-1);
 
 	env_index = get_env_var_index(name);
