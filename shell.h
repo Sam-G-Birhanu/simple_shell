@@ -125,6 +125,7 @@ void mem_del(void **ap);
 
 int _strleng(const char *str);
 char *_strdup(const char *str1);
+char *str_cat(char *str1, const char *str2);
 char *str_chr(const char *str, int char_to_search);
 
 
