@@ -86,8 +86,7 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
  * @first_av: av[0]
  * Return: 0 on success
 */
-int execute_commands(char *buff, char **cmds_list,
-	char *cmd, int __attribute__((unused))read, char *first_av)
+int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__((unused))read, char *first_av)
 {
 	char **commands;
 	int child_pid, _err = 0, flag = 0, *status = process_exit_code();
