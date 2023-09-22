@@ -40,6 +40,8 @@ int handle_arg(int ac, char **av, int *exec_file)
 
 /**
  * main - Entry point
+ * @ac: Number of arguments
+ * @av: Array of arguments as strings
  * Return: 0 on success
 */
 int main(int ac, char **av)
@@ -68,7 +70,6 @@ int main(int ac, char **av)
 			exit(*get_exit_code_alternate());
 		}
 
-		
 		buff = remove_comment(buff);
 		split_string(buff, "\n");
 		handling_semicolon_and_operators(buff, read, av[0]);

@@ -91,7 +91,7 @@ void handle_aliases(char **commands, list_t **alias_head)
 		str = curr->str;
 		if (strncmp(commands[0], str, _strleng(commands[0])) == 0 && str[_strleng(commands[0])] == '=')
 		{ /* the command is an alias */
-			alias_len = _strleng(&str[_strleng(commands[0]) + 2]); /* +2 beacause of "='" chars */
+			alias_len = _strleng(&str[_strleng(commands[0]) + 2]);
 			strncpy(tmp_buff, &str[_strleng(commands[0]) + 2], alias_len - 1);
 			tmp_buff[alias_len] = '\0';
 			/* Free and then update the command */

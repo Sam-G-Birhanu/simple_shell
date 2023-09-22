@@ -154,7 +154,7 @@ int _alias(char **commands)
 	list_t **alias_addrs = get_alias_head();
 
 	if (commands[1] == NULL)
-	{ 
+	{
 		for (curr = *alias_addrs; curr != NULL; curr = curr->next)
 		{
 			_puts(curr->str);

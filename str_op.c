@@ -62,8 +62,8 @@ int _strncmp(const char *str1, const char *str2, size_t n)
 
 /**
  * _strcmp - compare equality of 2 strings
- * @s1: string1
- * @s2: string2
+ * @str1: string1
+ * @str2: string2
  * Return: 0 success; else pointer
  */
 int _strcmp(const char *str1, const char *str2)

@@ -1,6 +1,6 @@
-#include "shell.h" 
+#include "shell.h"
 
-static int line_count_alternate; 
+static int line_count_alternate;
 /**
  * update_line_count - Counts the lines in a previous history file
  */

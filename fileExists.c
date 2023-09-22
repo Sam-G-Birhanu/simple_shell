@@ -48,7 +48,7 @@ char *dup_str(char *str)
 	char *str_copy = strdup(str);
 
 	if (str_copy == NULL)
-		dispatchError("Error while making copy of string"); 
+		dispatchError("Error while making copy of string");
 
 
 	return (str_copy);

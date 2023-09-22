@@ -1,4 +1,4 @@
-#include "shell.h" 
+#include "shell.h"
 
 /**
  * handle_variable_substitution - Handles dollar variable substitutions '$'
@@ -12,7 +12,7 @@ void handle_variable_substitution(char **command_args)
 	if (command_args[0] == NULL)
 		return;
 
-	/* Scan command arguments and perform variable substitutions using PATH, $$, $? */
+
 	for (i = 1; command_args[i] != NULL; i++)
 	{
 		if (command_args[i][0] != '$')
@@ -22,7 +22,7 @@ void handle_variable_substitution(char **command_args)
 		if (_strcmp(&command_args[i][1], "?") == 0)
 		{
 			free(command_args[i]);
-			command_args[i] = int_to_str(*get_exit_code_alternate()); 
+			command_args[i] = int_to_str(*get_exit_code_alternate());
 			return;
 		}
 
