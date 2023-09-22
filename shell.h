@@ -104,6 +104,6 @@ void dispatch_error(char *msg);
 void print_builtin_error(char *msg, char *arg);
 
 void set_alias(char *alias_pair);
-
+int _puts(char *strng);
 
 #endif
