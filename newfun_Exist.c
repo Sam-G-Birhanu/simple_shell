@@ -19,7 +19,7 @@ int exit_shell(char *buff, char **cmds_list, char **commands)
 	/* Command is exit */
 	if (commands[1] == NULL)
 	{
-		write_history();
+		write_history_to_file_in_home_dir();
 		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMDS);
 		if (*get_exit_code_alternate() == 127)
 			exit(2);
@@ -30,7 +30,7 @@ int exit_shell(char *buff, char **cmds_list, char **commands)
 	/* Command is exit status */
 	if (status >= 0)
 	{
-		write_history();
+		write_history_to_file_in_home_dir();
 		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMDS);
 		exit(status);
 	}
