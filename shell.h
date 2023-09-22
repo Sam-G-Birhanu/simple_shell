@@ -84,6 +84,7 @@ int is_valid_env_var_name(char *name);
 int get_env_var_index(char *name);
 void set_alias(char *alias_pair);
 int is_set_alias(char *alias_pair);
+void handle_aliases(char **commands);
 int handle_alias_args(char **commands, list_t **out_addrs);
 int fun_read_line(const int f_d, char **line);
 int new_read_line(char **str, char **line, int f_d); 
