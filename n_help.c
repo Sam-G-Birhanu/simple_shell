@@ -81,7 +81,7 @@ int fun_help(char **commands)
 		if (f_d != -1)
 		{
 			result = 0;
-			while (read_line(f_d, &line) == 1)
+			while (new_read_line(f_d, &line) == 1)
 			{
 				puts(line);
 				free(line);
