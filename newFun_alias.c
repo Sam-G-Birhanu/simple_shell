@@ -21,16 +21,17 @@ list_t **get_alias_head()
 /**
  * handle_alias_args - Evaluates alias input command and decides what to do
  * @alias_args: Arrays of commands
- * @alias_head: Pointer to alias head node
  * @out_addrs: Pointer to out's head node
  *
  * Return: -1 if error happens, 0 otherwise
 */
-int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs)
+int handle_alias_args(char **alias_args, list_t **out_addrs)
 {
 	int i, len, was_alias;
 	int status = 0;
 	list_t *curr;
+	list_t **alias_addrs = get_alias_head();
+
 
 	set_custom_exit_code(0);
 	for (i = 1; alias_args[i] != NULL; i++)
