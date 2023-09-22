@@ -32,7 +32,7 @@ int fun_read_line(const int f_d, char **line)
 	}
 	if (str[f_d] == NULL && reader == 0)
 		return (-1);
-	return (f_read_line(str, line, f_d));
+	return (new_read_line(str, line, f_d));
 }
 
 /**
