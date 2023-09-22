@@ -71,7 +71,7 @@ void handle_hist(char *buff);
 
 void free_hist(void);
 void free_linked_list(list_t *head);
-void write_history(void);
+void write_history_to_file_in_home_dir(void);
 void update_line_count(void);
 int *get_line_count_alternate();
 
