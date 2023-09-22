@@ -71,9 +71,11 @@ int handle_alias_args(char **alias_args, list_t **out_addrs)
  * @commands: Arrays of commands
  * @alias_head: Pointer to alias head node
 */
-void handle_aliases(char **commands, list_t **alias_head)
+void handle_aliases(char **commands)
 {
 	list_t *curr;
+	list_t **alias_addrs = get_alias_head();
+	int cmd_len = _strleng(commands[0]);
 	char *str;
 	char tmp_buff[250];
 	int i, alias_len = 0;
@@ -86,13 +88,13 @@ void handle_aliases(char **commands, list_t **alias_head)
 		tmp_buff[i] = '\0';
 
 	/* Search if a command is an alias */
-	for (curr = *alias_head; curr != NULL; curr = curr->next)
+	for (curr = *alias_addrs; curr != NULL; curr = curr->next)
 	{
 		str = curr->str;
-		if (strncmp(commands[0], str, _strleng(commands[0])) == 0 && str[_strleng(commands[0])] == '=')
+		if (strncmp(commands[0], str, cmd_len) == 0 && str[cmd_len] == '=')
 		{ /* the command is an alias */
-			alias_len = _strleng(&str[_strleng(commands[0]) + 2]);
-			strncpy(tmp_buff, &str[_strleng(commands[0]) + 2], alias_len - 1);
+			alias_len = _strleng(&str[cmd_len + 2]);
+			strncpy(tmp_buff, &str[cmd_len + 2], alias_len - 1);
 			tmp_buff[alias_len] = '\0';
 			/* Free and then update the command */
 			free(commands[0]);
