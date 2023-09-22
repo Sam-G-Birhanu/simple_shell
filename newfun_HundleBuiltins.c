@@ -45,7 +45,7 @@ int environment_builtins(char **commands)
 		if (commands[1] == NULL || commands[2] == NULL || commands[3] != NULL)
 			return (1);
 
-		_setenv(commands[1], commands[2]);
+		set_env(commands[1], commands[2]);
 		return (1);
 	}
 
@@ -54,7 +54,7 @@ int environment_builtins(char **commands)
 		if (commands[1] == NULL || commands[2] != NULL)
 			return (1);
 
-		_unsetenv(commands[1]);
+		unset_env(commands[1]);
 		return (1);
 	}
 
@@ -91,7 +91,7 @@ int other_builtins(char **commands)
 
 	if (strcmp(commands[0], "help") == 0)
 	{
-		get_help(commands);
+		fun_help(commands);
 		return (1);
 	}
 
