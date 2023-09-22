@@ -58,7 +58,7 @@ list_t **get_last_cmd_addrss();
 void handle_history(char *buff);
 void free_history(void);
 void write_history(void);
-void update_line_count(void)
+void update_line_count(void);
 int *get_line_count_alternate();
 int validate_env_name(char *name);
 int is_valid_env_var_name(char *name);
