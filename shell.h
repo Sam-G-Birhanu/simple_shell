@@ -96,7 +96,7 @@ char **parse_user_input(char *str_input, char *delimiter);
 int count_args(char *str_input, char *delimiter);
 
 /* Memory management */
-void *allocate_memory(unsigned int bytes);
+void *alloc_mem(unsigned int bytes)
 char *duplicate_string(char *str);
 void free_dbl_ptr(char **dbl_ptr);
 void free_allocs(char *buff, char **cmds_list, char **commands, int flags);
