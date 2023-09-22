@@ -96,8 +96,8 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 	handle_variable_substitution(commands);
 	handle_aliases(commands);
 	/* Exit error, ENTER, and builtins */
-	if (handle_exit(buff, cmds_list, commands) == -1 ||
-			handle_enter(commands) == 1	||
+	if (exit_shell(buff, cmds_list, commands) == -1 ||
+			handleEnter(commands) == 1	||
 			handle_builtins(commands) == 1)
 	{
 		free_dbl_ptr(commands);
