@@ -43,7 +43,7 @@ void __attribute__((constructor)) build_dynamic_environ(void);
 void __attribute__((destructor)) free_dynamic_environ(void);
 char *get_environment_variable(char *var_name);
 void handle_variable_substitution(char **command_args);
-int *get_exit_code_alternate()
+int *get_exit_code_alternate();
 void set_custom_exit_code(int code);
 void env(void);
 int _setenv(char *name, char *value);
@@ -59,7 +59,7 @@ void handle_history(char *buff);
 void free_history(void);
 void write_history(void);
 void update_line_count(void)
-int *get_line_count_alternate()
+int *get_line_count_alternate();
 int validate_env_name(char *name);
 int is_valid_env_var_name(char *name);
 int get_env_index(char *name);
