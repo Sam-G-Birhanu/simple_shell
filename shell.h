@@ -56,11 +56,11 @@ void handle_variable_substitution(char **command_args);
 int *get_exit_code_alternate();
 void set_custom_exit_code(int code);
 void env(void);
-int _setenv(char *name, char *value);
-int _unsetenv(char *name);
+int set_env(char *name, char *value);
+int unset_env(char *name);
 int _cd(char *path);
 int _alias(char **commands);
-int get_help(char **commands);
+int fun_help(char **commands);
 int _hist(void);
 
 list_t **get_alias_head();
@@ -75,7 +75,7 @@ void write_history_to_file_in_home_dir(void);
 void update_line_count(void);
 int *get_line_count_alternate();
 
-int validate_env_name(char *name);
+int validate_env_var_name(char *name);
 int is_valid_env_var_name(char *name);
 int get_env_var_index(char *name);
 void set_alias(char *alias_pair);
