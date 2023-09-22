@@ -89,11 +89,11 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__((unused))read, char *first_av)
 {
 	char **commands;
-	int child_pid, _err = 0, flag = 0, *status = process_exit_code();
+	int child_pid, _err = 0, flag = 0, *status = get_exit_code_alternate();
 
 	/* Generate array of commands */
 	commands = parse_user_input(cmd, " ");
-	handle_var_replacement(commands);
+	handle_variable_substitution(commands);
 	handle_aliases(commands);
 	/* Exit error, ENTER, and builtins */
 	if (handle_exit(buff, cmds_list, commands) == -1 ||
@@ -107,8 +107,8 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 	child_pid = fork();/* Fork parent process to execute the command */
 	if (child_pid == -1)
 	{
-		free_allocs(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatch_error(first_av);
+		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+		dispatchError(first_av);
 	}
 	else if (child_pid == 0)
 	{
@@ -122,7 +122,7 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 	wait(status);
 	*status = WEXITSTATUS(*status);
 	if (*status == 2)
-		set_process_exit_code(127);
+		set_custom_exit_code(127);
 	free_dbl_ptr(commands);
 	return (flag);
 }
@@ -137,11 +137,11 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 void handle_cmd_not_found(char *buff, char **cmds_list, char **commands,
 	char *first_av)
 {
-	set_process_exit_code(127);
-	write(2, first_av, _strlen(first_av));
+	set_custom_exit_code(127);
+	write(2, first_av, _strleng(first_av));
 	write(2, ": 1: ", 5);
-	write(2, commands[0], _strlen(commands[0]));
+	write(2, commands[0], _strleng(commands[0]));
 	write(2, ": not found\n", 12);
-	free_allocs(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+	free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
 	exit(127);
 }
