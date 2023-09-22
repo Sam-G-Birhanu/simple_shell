@@ -84,7 +84,7 @@ int handle_alias_args(char **alias_args, list_t **alias_head, list_t **out_addrs
 int fun_read_line(const int f_d, char **line);
 int new_read_line(char **str, char **line, int f_d); 
 
-char *_strtok(char *str, char *delimiter);
+char *split_string(char *str, char *delimiter);
 int _getline(char **buffer, size_t *buf_size, FILE *stream);
 char *_strcpy(char *destination, char *source);
 char *_strncpy(char *destination, char *source, int num);
