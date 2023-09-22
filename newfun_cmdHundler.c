@@ -56,8 +56,8 @@ int handle_PATH(char **commands)
 */
 char *getpath(char *dir, char *filename)
 {
-	int dir_len = strlen(dir);
-	int filename_len = strlen(filename);
+	int dir_len = strleng(dir);
+	int filename_len = strleng(filename);
 	char *path;
 
 	path = allocate_memory(sizeof(char *) * (dir_len + filename_len + 2));
