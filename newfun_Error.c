@@ -9,7 +9,8 @@
 void printError(char *msg, char *arg)
 {
 	int len = _strleng(msg);
-	char *first_av = get_first_av();
+	char *first_av = getfirst();
+
 
 	write(STDERR_FILENO, first_av, _strleng(first_av));
 	write(STDERR_FILENO, ": 1: ", 5);

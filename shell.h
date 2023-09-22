@@ -45,7 +45,7 @@ typedef struct list_s
 size_t print_list(const list_t *h);
 list_t *add_node_end(list_t **head, const char *str);
 
-char *get_first_av(void);
+char *getfirst(void);
 
 
 
@@ -99,7 +99,7 @@ int count_args(char *str_input, char *delimiter);
 void *alloc_mem(unsigned int bytes);
 char *dup_str(char *str);
 void free_dbl_ptr(char **dbl_ptr);
-void free_allocs(char *buff, char **cmds_list, char **commands, int flags);
+void free_allocated(char *buff, char **cmds_list, char **commands, int flags);
 
 void *fun_reallocate(void *ptr, unsigned int former_size, unsigned int current_size);
 
