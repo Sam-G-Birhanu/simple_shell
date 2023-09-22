@@ -55,7 +55,7 @@ void print_environment(void)
 
 	for (i = 0; env[i]; i++)
 	{
-		write(STDOUT_FILENO, env[i], strleng(env[i]));
+		write(STDOUT_FILENO, env[i], _strleng(env[i]));
 		write(STDOUT_FILENO, "\n", 1);
 	}
 

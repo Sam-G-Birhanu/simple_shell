@@ -22,7 +22,7 @@ int handle_arg(int ac, char **av, int *exec_file)
 
 	if (ac > 2)
 	{
-		write(STDERR_FILENO, err_msg, strleng(err_msg));
+		write(STDERR_FILENO, err_msg, _strleng(err_msg));
 		exit(1);
 	}
 	if (ac == 2)
