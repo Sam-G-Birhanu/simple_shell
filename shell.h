@@ -47,6 +47,9 @@ list_t *add_node_end(list_t **head, const char *str);
 
 char *getfirst(void);
 
+void handling_semicolon_and_operators(char *buff, int read, char *first_av);
+void handling_or(char *buff_semicolon, int read, char *first_av);
+int handling_and(char *buff_semicolon, int read, char *first_av, int prev_flag);
 
 
 void __attribute__((constructor)) build_dynamic_environ(void);
