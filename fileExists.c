@@ -69,6 +69,6 @@ void free_allocated(char *buff, char **cmds_list, char **commands, int flags)
 	if (flags & F_CMDS)
 		free_dbl_ptr(commands);
 
-	free_list(*(get_alias_head()));
-	free_history();
+	free_linked_list(*(get_alias_head()));
+	free_hist();
 }
