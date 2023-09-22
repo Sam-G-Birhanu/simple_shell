@@ -117,7 +117,7 @@ int get_exit_status(char *buff);
 
 /* Error handlers */
 void dispatchError(char *msg);
-void print_builtin_error(char *msg, char *arg);
+void printError(char *msg, char *arg);
 
 
 void mem_del(void **ap);
