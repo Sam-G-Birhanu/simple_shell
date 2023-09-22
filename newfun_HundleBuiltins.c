@@ -69,7 +69,7 @@ int environment_builtins(char **commands)
 */
 int other_builtins(char **commands)
 {
-	if (strcmp(commands[0], "change_directory") == 0)
+	if (strcmp(commands[0], "cd") == 0)
 	{
 		char *path = commands[1];
 
