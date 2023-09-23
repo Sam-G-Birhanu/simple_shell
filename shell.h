@@ -86,7 +86,7 @@ int is_set_alias(char *alias_pair);
 void handle_aliases(char **commands);
 int handle_alias_args(char **commands, list_t **out_addrs);
 int fun_read_line(const int f_d, char **line);
-int new_read_line(char **str, char **line, int f_d); 
+int new_read_line(char **str, char **line, int f_d);
 
 char *split_string(char *str, char *delimiter);
 int _getline(char **buffer, size_t *buf_size, FILE *stream);
