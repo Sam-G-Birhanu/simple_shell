@@ -86,11 +86,7 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
  * @ft_av: av[0]
  * Return: 0 on success
 */
-<<<<<<< HEAD
-int execute_commands(char *buff, char **cmdl, char *cmd,int __attribute__((unused))read, char *first_av)
-=======
 int execute_commands(char *b, char **c, char *cmd, int __attribute__((unused))r, char *ft_av)
->>>>>>> 4a93a889ade6db4030ee07b364f3fa452d3e8eeb
 {
 	char **commands;
 	int child_pid, _err = 0, flag = 0, *status = get_exit_code_alternate();
