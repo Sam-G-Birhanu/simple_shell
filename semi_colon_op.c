@@ -1,7 +1,7 @@
 #include "shell.h"
 
 void handle_aliases(char **commands);
-void handle_cmd_not_found(char *buff, char **cmds_list, char **commands,
+void handle_cmd_not_found(char *buff, char **cmdl, char **commands,
 	char *first_av);
 
 /**
@@ -14,13 +14,13 @@ void handle_cmd_not_found(char *buff, char **cmds_list, char **commands,
 void handling_semicolon_and_operators(char *buff, int read, char *first_av)
 {
 	/* int i; */
-	/*char **cmds_list = parse_user_input(buff, ";");*/
-	char **cmds_list = NULL;
+	/*char **cmdl = parse_user_input(buff, ";");*/
+	char **cmdl = NULL;
 
-	execute_commands(buff, cmds_list, buff, read, first_av);
-	/* for (i = 0; cmds_list[i] != NULL; i++) */
-		/*handling_or(cmds_list[i], read, first_av);*/
-	/* free_dbl_ptr(cmds_list); */
+	execute_commands(buff, cmdl, buff, read, first_av);
+	/* for (i = 0; cmdl[i] != NULL; i++) */
+		/*handling_or(cmdl[i], read, first_av);*/
+	/* free_dbl_ptr(cmdl); */
 }
 
 /**
@@ -33,15 +33,15 @@ void handling_semicolon_and_operators(char *buff, int read, char *first_av)
 void handling_or(char *buff_semicolon, int read, char *first_av)
 {
 	int i, flag, prev_flag = -1;
-	char **cmds_list_2 = parse_user_input(buff_semicolon, "||");
+	char **cmdl_2 = parse_user_input(buff_semicolon, "||");
 
-	for (i = 0; cmds_list_2[i] != NULL; i++)
+	for (i = 0; cmdl_2[i] != NULL; i++)
 	{
-		flag = handling_and(cmds_list_2[i], read, first_av, prev_flag);
+		flag = handling_and(cmdl_2[i], read, first_av, prev_flag);
 		/* record de last*/
 		prev_flag = flag;
 	}
-	free_dbl_ptr(cmds_list_2);
+	free_dbl_ptr(cmdl_2);
 }
 
 /**
@@ -55,38 +55,38 @@ void handling_or(char *buff_semicolon, int read, char *first_av)
 int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 {
 	int j = 0, flag = 1;
-	char **cmds_list_3 = parse_user_input(buff_or, "&&");
+	char **cmdl_3 = parse_user_input(buff_or, "&&");
 
 	/* logical part: if the last || is success, */
 	/*	next -> &&; if not exist &&, return */
 	if (prev_flag == 0)
 	{
 		j++;
-		if (cmds_list_3[j] == NULL)
+		if (cmdl_3[j] == NULL)
 			return (-1);
 	}
 
-	for (; cmds_list_3[j] != NULL; j++)
+	for (; cmdl_3[j] != NULL; j++)
 	{
-		flag = execute_commands(buff_or, cmds_list_3,
-									cmds_list_3[j], read, first_av);
+		flag = execute_commands(buff_or, cmdl_3,
+									cmdl_3[j], read, first_av);
 		prev_flag = flag;
 	}
 		/* record de last result , estudiar el caso 0 */
-	free_dbl_ptr(cmds_list_3);
+	free_dbl_ptr(cmdl_3);
 	return (flag);
 }
 
 /**
  * execute_commands - Fork and create commands, child process and executed
  * @buff: first buffer that function read
- * @cmds_list: List of commands
+ * @cmdl: List of commands
  * @cmd: Single command as a string
  * @read: return of read (open with getline)
  * @first_av: av[0]
  * Return: 0 on success
 */
-int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__((unused))read, char *first_av)
+int execute_commands(char *buff, char **cmdl, char *cmd, int __attribute__((unused))read, char *first_av)
 {
 	char **commands;
 	int child_pid, _err = 0, flag = 0, *status = get_exit_code_alternate();
@@ -96,7 +96,7 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 	handle_variable_substitution(commands);
 	handle_aliases(commands);
 	/* Exit error, ENTER, and builtins */
-	if (exit_shell(buff, cmds_list, commands) == -1 ||
+	if (exit_shell(buff, cmdl, commands) == -1 ||
 			handleEnter(commands) == 1	||
 			handle_builtins(commands) == 1)
 	{
@@ -107,7 +107,7 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 	child_pid = fork();/* Fork parent process to execute the command */
 	if (child_pid == -1)
 	{
-		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+		free_allocated(buff, cmdl, commands, F_BUFF | F_CMD_L | F_CMDS);
 		dispatchError(first_av);
 	}
 	else if (child_pid == 0)
@@ -115,8 +115,8 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 		_err = handle_PATH(commands);
 		execve(commands[0], commands, __environ);
 		if (_err != 0)
-			handle_cmd_not_found(buff, cmds_list, commands, first_av);
-		free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+			handle_cmd_not_found(buff, cmdl, commands, first_av);
+		free_allocated(buff, cmdl, commands, F_BUFF | F_CMD_L | F_CMDS);
 		dispatchError(first_av);
 	}
 	wait(status);
@@ -130,11 +130,11 @@ int execute_commands(char *buff, char **cmds_list, char *cmd, int __attribute__(
 /**
  * handle_cmd_not_found - Print a message to stderr
  * @buff: User's input
- * @cmds_list: Array of commands
+ * @cmdl: Array of commands
  * @commands: Array of strings
  * @first_av: First argument passed to the executable
 */
-void handle_cmd_not_found(char *buff, char **cmds_list, char **commands,
+void handle_cmd_not_found(char *buff, char **cmdl, char **commands,
 	char *first_av)
 {
 	set_custom_exit_code(127);
@@ -142,6 +142,6 @@ void handle_cmd_not_found(char *buff, char **cmds_list, char **commands,
 	write(2, ": 1: ", 5);
 	write(2, commands[0], _strleng(commands[0]));
 	write(2, ": not found\n", 12);
-	free_allocated(buff, cmds_list, commands, F_BUFF | F_CMD_L | F_CMDS);
+	free_allocated(buff, cmdl, commands, F_BUFF | F_CMD_L | F_CMDS);
 	exit(127);
 }
