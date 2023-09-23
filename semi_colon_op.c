@@ -17,7 +17,7 @@ void handling_semicolon_and_operators(char *buff, int read, char *first_av)
 	/*char **cmdl = parse_user_input(buff, ";");*/
 	char **cmdl = NULL;
 
-	ex_cmd(buff, cmdl, buff, read, first_av);
+	x_c(buff, cmdl, buff, read, first_av);
 	/* for (i = 0; cmdl[i] != NULL; i++) */
 		/*handling_or(cmdl[i], read, first_av);*/
 	/* free_dbl_ptr(cmdl); */
@@ -68,7 +68,7 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 
 	for (; cmdl_3[j] != NULL; j++)
 	{
-		flag = ex_cmd(buff_or, cmdl_3,
+		flag = x_c(buff_or, cmdl_3,
 									cmdl_3[j], read, first_av);
 		prev_flag = flag;
 	}
@@ -78,15 +78,15 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 }
 
 /**
- * ex_cmd - Fork and create commands, child process and executed
+ * x_c - Fork and create commands, child process and executed
  * @b: first buffer that function read
  * @c: List of commands
  * @cmd: Single command as a string
  * @r: return of read (open with getline)
- * @ft_av: av[0]
+ * @f: av[0]
  * Return: 0 on success
 */
-int ex_cmd(char *b, char **c, char *cmd, int __attribute__((unused))r, char *ft_av)
+int x_c(char *b, char **c, char *cmd, int __attribute__((unused))r, char *f)
 {
 	char **commands;
 	int child_pid, _err = 0, flag = 0, *status = get_exit_code_alternate();
@@ -108,16 +108,16 @@ int ex_cmd(char *b, char **c, char *cmd, int __attribute__((unused))r, char *ft_
 	if (child_pid == -1)
 	{
 		free_allocated(b, c, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatchError(ft_av);
+		dispatchError(f);
 	}
 	else if (child_pid == 0)
 	{
 		_err = handle_PATH(commands);
 		execve(commands[0], commands, __environ);
 		if (_err != 0)
-			handle_cmd_not_found(b, c, commands, ft_av);
+			handle_cmd_not_found(b, c, commands, f);
 		free_allocated(b, c, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatchError(ft_av);
+		dispatchError(f);
 	}
 	wait(status);
 	*status = WEXITSTATUS(*status);
