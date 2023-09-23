@@ -106,7 +106,7 @@ char *dup_str(char *str);
 void free_dbl_ptr(char **dbl_ptr);
 void free_allocated(char *buff, char **cmds_list, char **commands, int flags);
 
-void *fun_reallocate(void *ptr, unsigned int former_size, unsigned int current_size);
+void *fun_reallocate(void *ptr, unsigned int f_size, unsigned int c_size);
 
 /* handle_builtins */
 int handle_builtins(char **commands);
