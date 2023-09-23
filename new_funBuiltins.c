@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * get_env_var_index - Check if an environment variable exists and returns the index
+ * get_env_var_index - Check if an environment variable exists 
  * @env_name: Name to be searched
  *
  * Return: Index of the environment variable, -1 on error
