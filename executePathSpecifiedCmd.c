@@ -2,7 +2,7 @@
 
 
 /**
- * add_node_to_end - Adds a new node to the end of a linked list.
+ * add_node_end - Adds a new node to the end of a linked list.
  *
  * @head: A pointer to the head of the linked list.
  * @str: The content of the string for the first node.

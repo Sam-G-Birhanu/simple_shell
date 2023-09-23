@@ -66,7 +66,7 @@ int _hist(void)
 }
 
 /**
- * handle_history - Adds a command to the history
+ * handle_hist - Adds a command to the history
  * @buff: User's input
 */
 void handle_hist(char *buff)
