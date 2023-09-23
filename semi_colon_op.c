@@ -79,15 +79,14 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 
 /**
  * execute_commands - Fork and create commands, child process and executed
- * @buff: first buffer that function read
- * @cmdl: List of commands
+ * @b: first buffer that function read
+ * @c: List of commands
  * @cmd: Single command as a string
- * @read: return of read (open with getline)
- * @first_av: av[0]
+ * @r: return of read (open with getline)
+ * @ft_av: av[0]
  * Return: 0 on success
 */
-int execute_commands(char *buff, char **cmdl, char *cmd,
-int __attribute__((unused))read, char *first_av)
+int execute_commands(char *b, char **c, char *cmd, int __attribute__((unused))r, char *ft_av)
 {
 	char **commands;
 	int child_pid, _err = 0, flag = 0, *status = get_exit_code_alternate();
@@ -97,7 +96,7 @@ int __attribute__((unused))read, char *first_av)
 	handle_variable_substitution(commands);
 	handle_aliases(commands);
 	/* Exit error, ENTER, and builtins */
-	if (exit_shell(buff, cmdl, commands) == -1 ||
+	if (exit_shell(b, c, commands) == -1 ||
 			handleEnter(commands) == 1	||
 			handle_builtins(commands) == 1)
 	{
@@ -108,17 +107,17 @@ int __attribute__((unused))read, char *first_av)
 	child_pid = fork();/* Fork parent process to execute the command */
 	if (child_pid == -1)
 	{
-		free_allocated(buff, cmdl, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatchError(first_av);
+		free_allocated(b, c, commands, F_BUFF | F_CMD_L | F_CMDS);
+		dispatchError(ft_av);
 	}
 	else if (child_pid == 0)
 	{
 		_err = handle_PATH(commands);
 		execve(commands[0], commands, __environ);
 		if (_err != 0)
-			handle_cmd_not_found(buff, cmdl, commands, first_av);
-		free_allocated(buff, cmdl, commands, F_BUFF | F_CMD_L | F_CMDS);
-		dispatchError(first_av);
+			handle_cmd_not_found(b, c, commands, ft_av);
+		free_allocated(b, c, commands, F_BUFF | F_CMD_L | F_CMDS);
+		dispatchError(ft_av);
 	}
 	wait(status);
 	*status = WEXITSTATUS(*status);
