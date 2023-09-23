@@ -69,7 +69,6 @@ int handle_alias_args(char **alias_args, list_t **out_addrs)
 /**
  * handle_aliases - Handle alias replacement
  * @commands: Arrays of commands
- * @alias_head: Pointer to alias head node
 */
 void handle_aliases(char **commands)
 {
