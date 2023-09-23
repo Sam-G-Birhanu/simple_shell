@@ -3,34 +3,34 @@
 /**
  * fun_reallocate - Reallocates a memory block
  * @ptr: Pointer to the memory to be reallocated
- * @former_size: Size in bytes of the actual allocated memory
- * @current_size: Size in bytes for the new allocated memory
+ * @f_size: Size in bytes of the actual allocated memory
+ * @c_size: Size in bytes for the new allocated memory
  *
  * Return:Pointer to the newly allocated memory
  */
-void *fun_reallocate(void *ptr, unsigned int former_size, unsigned int current_size)
+void *fun_reallocate(void *ptr, unsigned int f_size, unsigned int c_size)
 {
 	int limit, i;
 	void *pointer;
 
-	if (former_size == current_size)
+	if (f_size == c_size)
 		return (ptr);
 
 	if (ptr == NULL)
-		return (malloc(current_size));
+		return (malloc(c_size));
 
-	if (current_size == 0)
+	if (c_size == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
 
-	pointer = malloc(current_size);
+	pointer = malloc(c_size);
 
-	if (former_size > current_size)
-		limit = current_size;
+	if (f_size > c_size)
+		limit = c_size;
 	else
-		limit = former_size;
+		limit = f_size;
 
 	for (i = 0; i < limit; i++)
 		((char *)pointer)[i] = ((char *)ptr)[i];
