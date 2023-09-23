@@ -50,8 +50,7 @@ char *getfirst(void);
 int x_c(char *b, char **c, char *cmd, int r, char *f);
 void handling_semicolon_and_operators(char *buff, int read, char *first_av);
 void handling_or(char *buff_semicolon, int read, char *first_av);
-int handling_and(char *buff_semicolon, int read, char *first_av, int prev_flag);
-
+int handling_and(char *buff_or, int read, char *ft_av, int prev_flag);
 
 void __attribute__((constructor)) build_dynamic_environ(void);
 void __attribute__((destructor)) free_dynamic_environ(void);

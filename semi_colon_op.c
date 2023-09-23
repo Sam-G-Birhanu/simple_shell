@@ -48,11 +48,11 @@ void handling_or(char *buff_semicolon, int read, char *first_av)
  * handling_and - Handle && logical part and executes inside of it
  * @buff_or: first buffer that functions read
  * @read: return of read (open with getline)
- * @first_av: av[0]
+ * @ft_av: av[0]
  * @prev_flag: last flag of ||, it is important to print or not
  * Return: 0 on success
 */
-int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
+int handling_and(char *buff_or, int read, char *ft_av, int prev_flag)
 {
 	int j = 0, flag = 1;
 	char **cmdl_3 = parse_user_input(buff_or, "&&");
@@ -69,7 +69,7 @@ int handling_and(char *buff_or, int read, char *first_av, int prev_flag)
 	for (; cmdl_3[j] != NULL; j++)
 	{
 		flag = x_c(buff_or, cmdl_3,
-									cmdl_3[j], read, first_av);
+									cmdl_3[j], read, ft_av);
 		prev_flag = flag;
 	}
 		/* record de last result , estudiar el caso 0 */
