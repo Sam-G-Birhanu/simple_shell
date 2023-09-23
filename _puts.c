@@ -2,8 +2,7 @@
 
 /**
  * _puts - Prints a string to standard output
- * @str: String to be printed
- *
+ * @strng: String to be printed
  * Return: No of chars printed
 */
 int _puts(char *strng)

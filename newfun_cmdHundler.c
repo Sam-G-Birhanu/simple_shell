@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * handle_PATH - Checks if the command to execute could be found in PATH's dirs
- * @commands: Array of strings containing the command and args
- * Return: flag 0 if is succes; -1 if is error
-*/
+ *  handle_PATH - Checks if the cmd could be fnd
+ *  @commands: Array of strings containing the command and args
+ *  Return: flag 0 if is succes; -1 if is error
+ */
 int handle_PATH(char **commands)
 {
 	char *path_dirs, *path;
@@ -48,12 +48,11 @@ int handle_PATH(char **commands)
 }
 
 /**
- * getpath - Creates a string representing a full path to file
- * @dir: String representing a directory path
- * @filename: Name of the file we are looking for
- *
- * Return: String as a full path to "filename"
-*/
+ * getpath - Creates a string representing a full path to file
+ * @dir: String representing a directory path
+ * @filename: Name of the file we are looking for
+ * Return: String as a full path to "filename"
+ */
 char *getpath(char *dir, char *filename)
 {
 	int dir_len = _strleng(dir);
@@ -71,12 +70,11 @@ char *getpath(char *dir, char *filename)
 
 
 /**
- * parse_user_input - Builds an array of strings as arguments
- * @str_input: Command input given by the user
- * @delimiter: String of characters indicating the delimiters
- *
- * Return: Array of strings
-*/
+ * parse_user_input - Builds an array of strings as arguments
+ * @str_input: Command input given by the user
+ * @delimiter: String of characters indicating the delimiters
+ * Return: Array of strings
+ */
 char **parse_user_input(char *str_input, char *delimiter)
 {
 	int i, args_count = 0;
@@ -112,12 +110,11 @@ char **parse_user_input(char *str_input, char *delimiter)
 }
 
 /**
- * count_args - Counts the number of arguments in a command string
- * @str_input: Command as a string
- * @delimiter: Delimiter by which to separate the args
- *
- * Return: Number of arguments present in str_input
-*/
+ * count_args - Counts the number of arguments in a command string
+ * @str_input: Command as a string
+ * @delimiter: Delimiter by which to separate the args
+ * Return: Number of arguments present in str_input
+ */
 int count_args(char *str_input, char *delimiter)
 {
 	char *tkn, *tkn_ptr;

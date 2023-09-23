@@ -4,7 +4,7 @@ static int exit_code_alternate;
 static int is_exit_code_initialized = 1;
 
 /**
- * get_exit_code_alternate - Retrieves the address of the exit_code_alternate variable
+ * get_exit_code_alternate - Retrieves the address of the
  *
  * Return: Address of the exit_code_alternate variable
  */

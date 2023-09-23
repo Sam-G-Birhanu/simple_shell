@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * remove_comments - deletes a comment from the buffer
+ * remove_comment - deletes a comment from the buffer
  * @str_input: User's input
  *
  * Return: pointer to string
